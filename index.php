@@ -24,6 +24,61 @@
 
   <link rel="stylesheet" type="text/css" href="css/util.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
+  <style>@keyframes infiniteScrollBg {
+  0% {
+    transform: translateY(0%);
+  }
+  100%{
+    transform: translateY(-100%);
+  }
+  s
+}
+
+
+.animated-scene {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  min-height: 400px;
+  animation: infiniteScrollBg 50s  infinite;
+}
+
+.animated-scene__frame {
+  width: 100%;
+  height: 100%;
+
+  background-color: #4277a3;
+  background-image: url('portraits.jpg');
+}
+.layer {
+   content: '';
+display: block;
+position: absolute;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+background-color: rgba(255,94,58,.95);
+opacity: 1;
+z-index: auto;
+
+}
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+header, footer {
+  
+  padding: 20px;
+  color: white;
+  margin-top: 20px;
+}
+</style>
 
 </head>
 <body style="display: contents;">
