@@ -33,6 +33,7 @@
 
 /*---------------------------------------------*/
 a {
+<<<<<<< HEAD
   font-family: Poppins-Regular;
   font-size: 14px;
   line-height: 1.7;
@@ -40,21 +41,39 @@ a {
   margin: 0px;
   transition: all 0.4s;
   -webkit-transition: all 0.4s;
+=======
+	font-family: Poppins-Regular;
+	font-size: 14px;
+	line-height: 1.7;
+	color: #666666;
+	margin: 0px;
+	transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+>>>>>>> 610b83d3670b593814ae51b15b77f70b2a10475b
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
 }
 
 a:focus {
+<<<<<<< HEAD
   outline: none !important;
 }
 
 a:hover {
   text-decoration: none;
+=======
+	outline: none !important;
+}
+
+a:hover {
+	text-decoration: none;
+>>>>>>> 610b83d3670b593814ae51b15b77f70b2a10475b
   color: #a64bf4;
 }
 
 /*---------------------------------------------*/
 h1,h2,h3,h4,h5,h6 {
+<<<<<<< HEAD
   margin: 0px;
 }
 
@@ -69,13 +88,34 @@ p {
 ul, li {
   margin: 0px;
   list-style-type: none;
+=======
+	margin: 0px;
+}
+
+p {
+	font-family: Poppins-Regular;
+	font-size: 14px;
+	line-height: 1.7;
+	color: #666666;
+	margin: 0px;
+}
+
+ul, li {
+	margin: 0px;
+	list-style-type: none;
+>>>>>>> 610b83d3670b593814ae51b15b77f70b2a10475b
 }
 
 
 /*---------------------------------------------*/
 input {
+<<<<<<< HEAD
   outline: none;
   border: none;
+=======
+	outline: none;
+	border: none;
+>>>>>>> 610b83d3670b593814ae51b15b77f70b2a10475b
 }
 
 textarea {
@@ -109,6 +149,7 @@ textarea:-ms-input-placeholder { color: #adadad;}
 
 /*---------------------------------------------*/
 button {
+<<<<<<< HEAD
   outline: none !important;
   border: none;
   background: transparent;
@@ -120,6 +161,19 @@ button:hover {
 
 iframe {
   border: none !important;
+=======
+	outline: none !important;
+	border: none;
+	background: transparent;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+iframe {
+	border: none !important;
+>>>>>>> 610b83d3670b593814ae51b15b77f70b2a10475b
 }
 
 /*//////////////////////////////////////////////////////////////////
