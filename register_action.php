@@ -34,7 +34,7 @@
        else{
         echo "Email already registered!";
            echo"<br>";
-        echo "Please <a href='register.php'>Register</a> with another email ID";
+        echo "Please <a href='index.php'>Register</a> with another email ID";
        }
 }
 
