@@ -24,10 +24,12 @@
     
     }
 ?>
-<html>
+    <html>
+
     <body>
         <form method="post" action="">
             <input type="submit" name="logout" value="Logout!">
         </form>
     </body>
-</html>
+
+    </html>

@@ -4,10 +4,12 @@
         header("Location: home.php");
     }
 ?>
-<html>
+    <html>
+
     <head>
         <link href="css/bootstrap.min.css" rel="stylesheet">
     </head>
+
     <body>
         <div class="container">
             <form class="form-horizontal" method="post" action="login_action.php">
@@ -23,4 +25,5 @@
             </form>
         </div>
     </body>
-</html>
+
+    </html>
