@@ -84,10 +84,10 @@
       </header>
       <div style="margin-top: 250px;">
         <h1>
-          <font color="white" size="600px;" style="margin-left: 160px;">Welcome po to Gago Gaga Pota</font>
+          <font color="white" size="600px;" style="margin-left: 160px;">Welcome to Baso</font>
         </h1>
         <h2>
-          <font color="white" style="margin-left: 165px; font-weight: 400;">The no.1 Gago Gago Gago Gaga Pota</font>
+          <font color="white" style="margin-left: 165px; font-weight: 400;">The No. 1 Blogging Website</font>
         </h2>
       </div>
       <div class="container-login100-form-btn">
