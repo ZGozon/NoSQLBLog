@@ -8,7 +8,7 @@
   <html>
 
   <head>
-    <title></title>
+    <title>Blogging Website</title>
     <style>
       @keyframes infiniteScrollBg {
         0% {
