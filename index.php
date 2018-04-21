@@ -8,7 +8,7 @@
   <html>
 
   <head>
-    <title></title>
+    <title>Blogging Website</title>
     <style>
       @keyframes infiniteScrollBg {
         0% {
@@ -93,7 +93,7 @@
           <font color="white" size="600px;" style="margin-left: 160px;">Welcome to Baso</font>
         </h1>
         <h2>
-          <font color="white" style="margin-left: 165px; font-weight: 400;">The no.1 Blogging Site</font>
+          <font color="white" style="margin-left: 165px; font-weight: 400;">The No.1 Blogging Website</font>
         </h2>
       </div>
       <div class="container-login100-form-btn">
