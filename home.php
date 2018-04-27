@@ -33,7 +33,7 @@
         <link href="vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
 
         <style>
-            #text-post, #img-post {
+            #text-post, #img-post, #link-post {
                 display: none;
             }
         </style>
@@ -65,7 +65,7 @@
                             <a class="dropdown-item" href="#">Posts</a>
                             <a class="dropdown-item" href="#">Followers</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Logout</a>
+                            <a class="dropdown-item" href="logout_action.php">Logout</a>
                         </div>
                     </li>
                         <li class="nav-item">
@@ -80,15 +80,15 @@
             <div class="row">
                 <div class="col">
                     <div class="options">
-                        <button class="btn btn-light btn-lg" onclick="toggleDiv('text-post')">
+                        <button class="btn btn-light btn-lg" onclick="togglePost('text-post')">
                             Aa<br/>
                             Text
                         </button>
-                        <button class="btn btn-light btn-lg" onclick="toggleDiv('img-post')">
+                        <button class="btn btn-light btn-lg" onclick="togglePost('img-post')">
                             <i class="ion-camera"></i><br/>
                             Photo
                         </button>
-                        <button class="btn btn-light btn-lg">
+                        <button class="btn btn-light btn-lg" onclick="togglePost('link-post')">
                             <i class="ion-link"></i><br/>
                             Link
                         </button>
@@ -105,7 +105,7 @@
                                 <input class="form-control form-control-lg" type="text" placeholder="Title" name="title" id="title">
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" rows="4" name="content" id="content" placeholder="Your text here"></textarea>
+                                <textarea class="form-control" rows="4" name="content" id="content" placeholder="Your text here" required></textarea>
                             </div>
                             <div class="form-group">
                                 <input class="form-control" type="text" placeholder="#tags" name="tags" id="tags">
@@ -125,11 +125,40 @@
                         <h1>Create A New Post</h1>                    
                         <form action="newpost.php">
                             <div class="form-group">
-                                <input type="file" required accept="image/gif, image/jpeg, image/png">
+                                <input type="file" id="uploadimg" required accept="image/gif, image/jpeg, image/png">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="#tags" name="tags" id="tags">
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-primary" type="submit">Post</button>&nbsp;&nbsp;
-                                <button class="btn" type="button" onclick="toggleDiv('img-post')">Cancel</button>
+                                <button class="btn" type="reset">Clear</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="link-post">
+                <div class="row">
+                    <div class="col-8">
+                        <h1>Create A New Post</h1>
+                        <form action="newpost.php">
+                            <div class="form-group">
+                                <input class="form-control form-control-lg" type="text" placeholder="Link" name="link" id="link" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="#tags" name="tags" id="tags">
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit">Post</button>&nbsp;&nbsp;
+                                <button class="btn" type="reset">Clear</button>
                             </div>
                         </form>
                     </div>
