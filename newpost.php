@@ -1,4 +1,5 @@
 <?php
+  require_once 'connection.php';
   require_once 'library.php';
   if(chkLogin()){
     // echo "Logged in!";
@@ -10,6 +11,10 @@
   }
 
   if(isset($_REQUEST['type']) &&  !empty($_REQUEST['type'])) {
+
+    $type = $_GET['type'];
+    echo $type;
+
     $type = $_GET['type'];
     $content = $_GET['content'];
     $tags = $_GET['tags'];
@@ -21,6 +26,8 @@
         "content" => $content,
         "tags" => $tags
       );
+
+      print_r($arrays);
     } else if($type === 'img') {
       $imgdata = $_GET['imgdata'];
       $arrays = array(
@@ -38,6 +45,10 @@
         "tags" => $tags
       );
     }
-    addPost($arrays);
+      // $test = "testingWorkpls";
+      addTEST($arrays);
+            //   $test = "testingWorkpls";
+
+            // addPost($test);
   }
 ?>
