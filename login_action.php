@@ -15,7 +15,7 @@
         $email = $_POST['email'];
         $upass = $_POST['pass'];
         $criteria = array("Email Address"=> $email);
-        $query = $collection->findOne($criteria);
+        $query = $userdata->findOne($criteria);
         //var_dump($query);
         if(empty($query)){
             echo "Email ID is not registered.";

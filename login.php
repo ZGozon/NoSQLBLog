@@ -1,35 +1,100 @@
+
 <?php
     require_once 'library.php';
     if(chkLogin()){
         header("Location: home.php");
     }
 ?>
-    <html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Log-In</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    </head>
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->  
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->  
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/login_main.css">
+    <link rel="stylesheet" type="text/css" href="css/login_util.css">
+<!--===============================================================================================-->
+</head>
+<body>
+    
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" method="post" action="login_action.php">
+                    <span class="login100-form-title p-b-26">
+                        Welcome
+                    </span>
 
-    <body>
-        <div class="container">
-            <form class="form-horizontal" method="post" action="login_action.php">
-                <div class="form-group">
-                    <label class="sr-only" for="exampleInputEmail3">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail3" name="email" placeholder="Email" required>
-                </div>
-                <div class="form-group">
-                    <label class="sr-only" for="exampleInputPassword3">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword3" name="pass" placeholder="Password" required>
-                </div>
-                <button type="submit" name="login" class="btn btn-default">Sign in</button>
-            </form>
+                    <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
+                        <input class="input100" type="text" name="email">
+                        <span class="focus-input100" data-placeholder="Email"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input class="input100" type="password" name="pass">
+                        <span class="focus-input100" data-placeholder="Password"></span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button  type="submit" name="login" class="login100-form-btn">
+                                Login
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="text-center p-t-115">
+                        <span class="txt1">
+                            Don’t have an account?
+                        </span>
+
+                        <a class="txt2" href="#">
+                            Sign Up
+                        </a>
+                    </div>
+                </form>
+            </div>
         </div>
+    </div>
+    
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    </body>
+    <div id="dropDownSelect1"></div>
+    
+<!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+    <script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+    <script src="js/login.js"></script>
 
-    </html>
+</body>
+</html>
