@@ -44,4 +44,10 @@ function removeall(){
   return true;
 }
 
+function addPost($data) {
+  global $postdata;
+  $postdata->insert($data);
+  return true;
+}
+
 ?>
