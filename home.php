@@ -100,7 +100,8 @@
                 <div class="row">
                     <div class="col-8">
                         <h1>Create A New Post</h1>
-                        <form action="newpost.php">
+                        <form action="newpost.php?type=text">
+                            <input type="hidden" value="text" name="type" id="type">
                             <div class="form-group">
                                 <input class="form-control form-control-lg" type="text" placeholder="Title" name="title" id="title">
                             </div>
@@ -123,9 +124,9 @@
                 <div class="row">
                     <div class="col-8">
                         <h1>Create A New Post</h1>                    
-                        <form action="newpost.php">
+                        <form action="newpost.php?type=img">
                             <div class="form-group">
-                                <input type="file" id="uploadimg" required accept="image/gif, image/jpeg, image/png">
+                                <input type="file" required accept="image/gif, image/jpeg, image/png" name="imgdata" id="imgdata">
                             </div>
                             <div class="form-group">
                                 <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
@@ -146,7 +147,7 @@
                 <div class="row">
                     <div class="col-8">
                         <h1>Create A New Post</h1>
-                        <form action="newpost.php">
+                        <form action="newpost.php?type=link">
                             <div class="form-group">
                                 <input class="form-control form-control-lg" type="text" placeholder="Link" name="link" id="link" required>
                             </div>
