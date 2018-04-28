@@ -7,6 +7,17 @@ function register($document){
   return true;
 }
 
+
+function addTEST($document) {
+  // echo $test;
+
+  global $postdata;
+  $postdata->insert($document);
+  // return true;
+
+      // $document->insert($document);
+}
+
 function chkemail($email){
   global $userdata;
   $temp = $userdata->findOne(array('Email Address'=> $email));
@@ -43,5 +54,16 @@ function removeall(){
   unset($_SESSION["email"]);
   return true;
 }
+
+function addPost($document) {
+  echo $document;
+
+  global $postdata;
+  $postdata->insert($document);
+  return true;
+}
+
+
+
 
 ?>
