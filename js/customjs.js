@@ -22,4 +22,4 @@ function closePost() {
 
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
-})
+});

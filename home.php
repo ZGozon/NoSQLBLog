@@ -31,6 +31,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
+        <link href="vendor/tagsinput/tagsinput.css" rel="stylesheet">
 
         <style>
             #text-post, #img-post, #link-post {
@@ -109,7 +110,7 @@
                                 <textarea class="form-control" rows="4" name="content" id="content" placeholder="Your text here" required></textarea>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="tags" placeholder="#tags" name="tags" id="tags" data-role="tagsinput">
+                                <input class="form-control" type="text" placeholder="#tags" name="tags" id="tags" data-role="tagsinput">
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-primary" type="submit">Post</button>&nbsp;&nbsp;
@@ -132,7 +133,7 @@
                                 <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="text" placeholder="#tags" name="tags" id="tags">
+                                <input class="form-control" type="text" placeholder="#tags" name="tags" id="tags" data-role="tagsinput">
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-primary" type="submit">Post</button>&nbsp;&nbsp;
@@ -155,7 +156,7 @@
                                 <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="text" placeholder="#tags" name="tags" id="tags">
+                                <input class="form-control" type="text" placeholder="#tags" name="tags" id="tags" data-role="tagsinput">
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-primary" type="submit">Post</button>&nbsp;&nbsp;
@@ -170,6 +171,7 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
         <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="vendor/tagsinput/tagsinput.js"></script>
         <script src="js/customjs.js"></script>
     </body>
 
