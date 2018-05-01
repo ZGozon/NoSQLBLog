@@ -7,17 +7,6 @@ function register($document){
   return true;
 }
 
-
-function addTEST($document) {
-  // echo $test;
-
-  global $postdata;
-  $postdata->insert($document);
-  // return true;
-
-      // $document->insert($document);
-}
-
 function chkemail($email){
   global $userdata;
   $temp = $userdata->findOne(array('Email Address'=> $email));
@@ -56,14 +45,24 @@ function removeall(){
 }
 
 function addPost($document) {
-  echo $document;
-
   global $postdata;
   $postdata->insert($document);
   return true;
 }
 
+function addImage($image){
 
+  // global $postdata;
 
+  // $document = array(
+  //     "type" => "MCQ",
+      
+  //     "cover" => new MongoDB\BSON\Binary(file_get_contents($image["tmp_name"]), MongoDB\BSON\Binary::TYPE_GENERIC),
+  // );
+  // if ($postdata->insertOne($document)) {
+  //     return true;
+  //     echo "img uploaded!";
+  // }
+}
 
 ?>
