@@ -16,28 +16,34 @@
     $content = $_GET['content'];
     $tags = $_GET['tags'];
 
-  switch ($type) {
-    case "text":
+    switch ($type) {
+      case "text":
+        $title = $_GET['title'];
+        $arrays = array(
+          "type" => $type,
+          "title" => $title,
+          "content" => $content,
+          "tags" => $tags
+        );
+          addPost($arrays);
+          break;
+      case "postlink":
+        $link = $_GET['link'];
+        $arrays = array(
+          "type" => $type,
+          "link" => $link,
+          "caption" => $content,
+          "tags" => $tags 
+        );
+          addPost($arrays);
+          break;
+      case "image":
+        $image = $_FILES['cover'];
+        addImage($image);
 
-      $title = $_GET['title'];
-      $arrays = array(
-        "type" => $type,
-        "title" => $title,
-        "content" => $content,
-        "tags" => $tags
-      );
-           addTEST($arrays);
-        break;
-    case "link":
-        
-      echo "  <script>alert('You have Clicked Submit');</script>";
-
-        break;
-    case "green":
-        echo "Your favorite color is green!";
-        break;
-    default:
-        echo "Your favorite color is neither red, blue, nor green!";
+          break;
+      default:
+          echo "post failed try again!";
     }
   }
 
