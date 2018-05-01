@@ -52,16 +52,17 @@ function addPost($document) {
 
 function addImage($image){
 
-  global $postdata;
+  // global $postdata;
 
-  $document = array(
-      "type" => "MCQ",
-      "cover" => new MongoDB\BSON\Binary(file_get_contents($image["tmp_name"]), MongoDB\BSON\Binary::TYPE_GENERIC),
-  );
-  if ($postdata->insertOne($document)) {
-      return true;
-      echo "img uploaded!";
-  }
+  // $document = array(
+  //     "type" => "MCQ",
+      
+  //     "cover" => new MongoDB\BSON\Binary(file_get_contents($image["tmp_name"]), MongoDB\BSON\Binary::TYPE_GENERIC),
+  // );
+  // if ($postdata->insertOne($document)) {
+  //     return true;
+  //     echo "img uploaded!";
+  // }
 }
 
 ?>

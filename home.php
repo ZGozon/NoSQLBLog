@@ -125,9 +125,12 @@
                 <div class="row">
                     <div class="col-8">
                         <h1>Create A New Post</h1>                    
-                        <form action="newpost.php?type=img">
+                           <form action="newpost.php" enctype="multipart/form-data">
+                            <input type="hidden" value="image" name="type" id="type">
+                            
                             <div class="form-group">
-                                <input type="file" required accept="image/gif, image/jpeg, image/png" name="imgdata" id="imgdata">
+                                <!-- <input type="file" required accept="image/gif, image/jpeg, image/png" name="imgdata" id="imgdata"> -->
+                                <input type="file" name="cover">
                             </div>
                             <div class="form-group">
                                 <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
@@ -169,11 +172,11 @@
             </div>
         </div>
 
-        <form method="POST" action="newpost.php" enctype="multipart/form-data">
+        <!-- <form method="POST" action="newpost.php" enctype="multipart/form-data">
         <input type="hidden" value="iamge" name="type" id="type">
         <input type="file" name="cover" >
         <button type="submit">Submit</button>
-        </form>
+        </form> -->
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>

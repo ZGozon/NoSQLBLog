@@ -38,7 +38,10 @@
           addPost($arrays);
           break;
       case "image":
-        $image = $_FILES['cover'];
+        $test1 = $_GET['cover'];
+
+        $image = $_FILES['image'] = $test1 ;
+
         addImage($image);
 
           break;
