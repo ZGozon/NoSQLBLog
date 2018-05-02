@@ -1,6 +1,8 @@
 <?php
-session_start();
-
+ if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
 function register($document){
   global $userdata;
   $userdata->insert($document);
