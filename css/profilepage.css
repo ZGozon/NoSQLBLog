@@ -302,6 +302,8 @@ body {
   width: 100%;
   background-color: white;
   padding: 20px;
+  flex: 0 0 100%;
+  max-width: 100%;
 }
 
 .panel-footer {
@@ -468,6 +470,8 @@ html {
     overflow: hidden;
     margin-left: 15px;
     margin-bottom: 50px;
+    flex: 0 0 100%;
+    max-width: 100%;
   }
   .card:after {
     content: '';
