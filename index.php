@@ -126,6 +126,18 @@
                                     </button>
                                 </div>
                             </div>
+
+
+                        <center>
+                        <span class="txt1">
+                            Already Member?
+                        </span>
+
+                        <a class="txt2" href="login.php">
+                            Log in
+                        </a>
+                    </center>
+        
                     </div>
                     </form>
                 </div>

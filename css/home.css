@@ -1,0 +1,37 @@
+.btn-link{
+  border:none;
+  outline:none;
+  background:none;
+  cursor:pointer;
+  color:white;
+  padding:0;
+  font-family:inherit;
+  font-size:110%;
+  margin-top: 13px;
+  margin-right: 10px;
+}
+
+.btn-link:hover, .btn-link:focus {
+  color: white;
+
+  background-color: transparent;
+}
+.navbar-inverse {
+  background-color: #d26e25;
+  border-color: #d26e25;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+  color: white;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
+  color: #fff;
+  background-color: #964e0e;
+}
+.navbar-inverse .navbar-brand {
+  color: white;
+}
+.nav>li>a.userdd {
+  padding: 5px 15px
+}
