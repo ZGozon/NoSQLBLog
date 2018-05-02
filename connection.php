@@ -5,7 +5,8 @@
 
     $db = $m->loginreg;
     //echo "Databse loginreg selected";
-    $collection = $db->userdata; 
+    $userdata = $db->userdata; 
+    $postdata = $db->postdata;
     //echo "Collection userdata Selected Successfully";
     }
     catch (Exception $e){

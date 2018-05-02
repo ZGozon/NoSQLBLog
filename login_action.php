@@ -6,7 +6,7 @@
         header("Location: home.php");
     }
 ?>
-<?php
+    <?php
 
     if(isset($_POST['login'])){
 //        print_r($_POST);
@@ -15,11 +15,10 @@
         $email = $_POST['email'];
         $upass = $_POST['pass'];
         $criteria = array("Email Address"=> $email);
-        $query = $collection->findOne($criteria);
+        $query = $userdata->findOne($criteria);
         //var_dump($query);
         if(empty($query)){
-            echo "Email ID is not registered.";
-            echo "Either <a href='register'>Register</a> with the new Email ID or <a href='login.php'>Login</a> with an already registered ID";
+            header("Location: loginFail.php");
         }
         else{
             
@@ -28,10 +27,7 @@
                     $var = setsession($email);
 //                    echo"<pre>";   
 //                    print_r($_SESSION);
-                  
-                    
                     if($var){
-                        
                     header("Location: home.php");
                     }
                     else{
@@ -39,13 +35,10 @@
                     }
                 }
                 else{
-                    echo "You have entered a wrong password";
-                    echo "<br>";
-                    echo "Either <a href='register'>Register</a> with the new Email ID or <a href='login.php'>Login</a> with an already registered ID";
+                     header("Location: loginFail.php");
+                     echo "<br>";
+                    echo "Either <a href='index.php'>Register</a> with the new Email ID or <a href='login.php'>Login</a> with an already registered ID";
                 }
-                
-            
-        
         }
     }
     
