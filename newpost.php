@@ -15,6 +15,7 @@
     $type = $_GET['type'];
     $content = $_GET['content'];
     $tags = $_GET['tags'];
+    $tags = explode(",", $tags);
 
     switch ($type) {
       case "text":
