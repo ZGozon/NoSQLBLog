@@ -151,7 +151,7 @@
                             
                             <div class="form-group">
                                 <label class="upload">
-                                    <input type="file" required accept="image/gif, image/jpeg, image/png" name="imgdata" id="imgdata">
+                                    <input type="file" required accept="image/gif, image/jpeg, image/png" name="cover" id="cover">
                                     <i class="ion-image"></i>
                                     Upload
                                 </label>

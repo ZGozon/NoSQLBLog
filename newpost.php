@@ -39,11 +39,14 @@
           addPost($arrays);
           break;
       case "image":
-        $test1 = $_GET['cover'];
+        $fileName = $_GET['cover'];
 
-        $image = $_FILES['image'] = $test1 ;
+        // $image = $_FILES['image'] = $test1 ;
+        $array = array(
+          "img" => $fileName
+        );
 
-        addImage($image);
+        addImage($array);
 
           break;
       default:
