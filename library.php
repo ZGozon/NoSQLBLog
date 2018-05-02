@@ -23,6 +23,7 @@ function setsession($email){
   global $userdata;
   $temp = $userdata->findOne(array('Email Address'=> $email));
   $_SESSION["uname"] = $temp["First Name"];
+  $_SESSION["sname"] = $temp["Last Name"];
   $_SESSION["email"] = $email;
   return true;
 }
