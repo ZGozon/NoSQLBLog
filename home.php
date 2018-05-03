@@ -4,15 +4,12 @@
        
         // echo "Logged in!";
         $name = $_SESSION["uname"];
-
         // echo "Welcome $name!!!";
         
-
     }
     else{
         header("Location: login.php");
     }
-
     if(isset($_POST['logout'])){
         
         $var = removeall();
@@ -209,4 +206,4 @@
         <script src="js/customjs.js"></script>
     </body>
 
-    </html>
+</html>

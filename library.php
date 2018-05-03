@@ -1,12 +1,13 @@
 <?php
-session_start();
-
+ if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
 function register($document){
   global $users;
   $users->insert($document);
   return true;
 }
-
 function chkemail($email){
   global $users;
   $temp = $users->findOne(array('Email Address'=> $email));
@@ -17,7 +18,6 @@ function chkemail($email){
     return false;
   }
 }
-
 function setsession($email){
   $_SESSION["userLoggedIn"] = 1;
   global $users;
@@ -27,7 +27,6 @@ function setsession($email){
   $_SESSION["email"] = $email;
   return true;
 }
-
 function chkLogin(){
   //var_dump($_SESSION);
   if (isset($_SESSION["userLoggedIn"])){
@@ -37,20 +36,17 @@ function chkLogin(){
     return false;
   }
 }
-
 function removeall(){
   unset($_SESSION["userLoggedIn"]);
   unset($_SESSION["uname"]);
   unset($_SESSION["email"]);
   return true;
 }
-
 function addPost($document) {
   global $post_details;
   $post_details->insert($document);
   return true;
 }
-
 function addImage($image){
 
   global $post_details;
@@ -67,5 +63,4 @@ function addImage($image){
   $post_details->insert($image);
   return true;
 }
-
 ?>
