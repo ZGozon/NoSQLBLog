@@ -16,6 +16,7 @@
     $tags = $_GET['input-tags'];
     $tags = explode(",", $tags);
     $comments = array();
+    date_default_timezone_set("Asia/Hong_Kong");
     $date = date("Y/m/d h:i:sa");
     $comments_count = count($comments);
     switch ($type) {
