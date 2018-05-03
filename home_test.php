@@ -1,5 +1,6 @@
 <?php    
     require_once 'library.php';
+    require_once 'connection.php';
 
     $name = $_SESSION["uname"];
     $sname = $_SESSION["sname"];
@@ -15,7 +16,8 @@
         }
     }
     
-        
+$result = $db->post_details->find()->sort(array('_id' => -1));
+
 ?>
 <!doctype html>
 <html lang="en" dir="ltr">
@@ -72,7 +74,7 @@
                 <img src="./demo/brand/tabler.svg" class="header-brand-img" alt="tabler logo">
               </a>
               <div class="d-flex order-lg-2 ml-auto">
-                <div class="dropdown d-none d-md-flex">
+               <!--  <div class="dropdown d-none d-md-flex">
                   <a class="nav-link icon" data-toggle="dropdown">
                     <i class="fe fe-bell"></i>
                     <span class="nav-unread"></span>
@@ -102,7 +104,7 @@
                     <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item text-center text-muted-dark">Mark all as read</a>
                   </div>
-                </div>
+                </div> -->
                 <div class="dropdown">
                   <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
                     <span class="avatar avatar-placeholder"></span>
@@ -159,7 +161,7 @@
               <div class="col-lg order-lg-first">
                 <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                   <li class="nav-item">
-                    <a href="./index.html" class="nav-link active"><i class="fe fe-home"></i> Home</a>
+                    <a href="home_test.php" class="nav-link active"><i class="fe fe-home"></i> Home</a>
                   </li>
               
                 </ul>
@@ -296,6 +298,15 @@
                 </div>
             </div>
 
+             <?php     
+    foreach ($result as $res) {
+        echo "<tr>";
+        echo "<td>".$res['title']."</td>"; 
+        echo "<td>".$res['content']."</td>";
+        // echo "<td>".$res['tags']."</td>";       
+    }
+    ?>
+
     
                 </div>
               </div>
@@ -364,6 +375,7 @@
       </div>
     </div>
   </div>
+
 
       <div class="footer">
         <div class="container">
@@ -469,5 +481,6 @@
                     });
                 });
               </script>
-  </body>
+
+               </body>
 </html>
