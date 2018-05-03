@@ -36,9 +36,9 @@
           addPost($arrays);
           break;
       case "image":
-        $test1 = $_GET['cover'];
-        $image = $_FILES['image'] = $test1 ;
-        addImage($image);
+        // $test1 = $_GET['cover'];
+        // $image = $_FILES['image'] = $test1 ;
+        // addImage($image);
           break;
       default:
           echo "post failed try again!";
