@@ -49,7 +49,7 @@ function addPost($document) {
 }
 function addImage($image){
 
-  // global $post_details;
+  global $post_details;
 
   // $document = array(
   //     "type" => "MCQ",
