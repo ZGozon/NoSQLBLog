@@ -42,10 +42,18 @@ function removeall(){
   unset($_SESSION["email"]);
   return true;
 }
-function addPost($document) {
+function addPost($document, $email) {
   global $post_details;
+  global $users;
+  global $posts;
   $post_details->insert($document);
-  return true;
+  $post_details_id = $document['_id'];
+  $userQuery = array('Email Address' => $email);
+  $cursor = $users->find($userQuery);
+  foreach ($cursor as $doc) {
+    $userId = $doc['_id'];
+  }
+  echo $userId;
 }
 function addImage($image){
 

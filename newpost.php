@@ -4,6 +4,7 @@
   if(chkLogin()){
     // echo "Logged in!";
     $name = $_SESSION["uname"];
+    $email = $_SESSION["email"];
     // echo "Welcome $name!!!";
   }
   else{
@@ -14,6 +15,9 @@
     $content = $_GET['content'];
     $tags = $_GET['input-tags'];
     $tags = explode(",", $tags);
+    $comments = array();
+    $date = date("Y/m/d h:i:sa");
+    $comments_count = count($comments);
     switch ($type) {
       case "text":
         $title = $_GET['title'];
@@ -21,9 +25,12 @@
           "type" => $type,
           "title" => $title,
           "content" => $content,
-          "input-tags" => $tags
+          "input-tags" => $tags,
+          "comments" => $comments,
+          "date_posted" => $date,
+          "comments_count" => $comments_count
         );
-          addPost($arrays);
+          addPost($arrays, $email);
           break;
       case "postlink":
         $link = $_GET['link'];
@@ -31,9 +38,12 @@
           "type" => $type,
           "link" => $link,
           "caption" => $content,
-          "input-tags" => $tags 
+          "input-tags" => $tags ,
+          "comments" => $comments,
+          "date_posted" => $date,
+          "comments_count" => $comments_count
         );
-          addPost($arrays);
+          addPost($arrays, $email);
           break;
       case "image":
         // $test1 = $_GET['cover'];
