@@ -68,7 +68,7 @@
         <div class="header py-4">
           <div class="container">
             <div class="d-flex">
-              <a class="header-brand" href="./index.html">
+              <a class="header-brand" href="home_test.php">
                 <img src="./demo/brand/tabler.svg" class="header-brand-img" alt="tabler logo">
               </a>
               <div class="d-flex order-lg-2 ml-auto">
@@ -241,13 +241,20 @@
                            <form action="newpost.php" enctype="multipart/form-data" class="post-form">
                             <input type="hidden" value="image" name="type" id="type">
                             
-                            <div class="form-group">
+                      <!--       <div class="form-group">
                                 <label class="upload">
                                     <input type="file" required accept="image/gif, image/jpeg, image/png" name="cover" id="cover">
                                     <i class="ion-image"></i>
                                     Upload
                                 </label>
-                            </div>
+                            </div> -->
+
+                            <div class="custom-file">
+                          <input type="file" class="custom-file-input" required accept="image/gif, image/jpeg, image/png" name="cover" id="cover">
+                          <label class="custom-file-label">Choose file</label>
+                          </div>
+                          <br>
+
                             <div class="form-group">
                                 <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
                             </div>
