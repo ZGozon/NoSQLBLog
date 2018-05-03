@@ -54,6 +54,12 @@
     <script src="./assets/plugins/maps-google/plugin.js"></script>
     <!-- Input Mask Plugin -->
     <script src="./assets/plugins/input-mask/plugin.js"></script>
+    <script src="js/customjs.js"></script>
+         <style>
+            #text-post, #img-post, #link-post {
+                display: none;
+            }
+        </style>
   </head>
   <body class="">
     <div class="page">
@@ -190,6 +196,83 @@
                             <i class="ion-link"></i><br/>
                             Link
                         </button>
+                    </div>
+                </div>
+            </div>
+
+                    <div id="text-post">
+                <div class="row">
+                    <div class="col-8">
+                        <h1>Create A New Post</h1>
+                        <form action="newpost.php" class="post-form">
+                            <input type="hidden" value="text" name="type" id="type">
+                            <div class="form-group">
+                                <input class="form-control form-control-lg" type="text" placeholder="Title" name="title" id="title">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="4" name="content" id="content" placeholder="Your text here" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="#tags" name="tags" id="tags" data-role="tagsinput">
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit">Post</button>&nbsp;&nbsp;
+                                <button class="btn" type="button" onclick="closePost()">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="img-post">
+                <div class="row">
+                    <div class="col-8">
+                        <h1>Create A New Post</h1>                    
+                           <form action="newpost.php" enctype="multipart/form-data" class="post-form">
+                            <input type="hidden" value="image" name="type" id="type">
+                            
+                            <div class="form-group">
+                                <label class="upload">
+                                    <input type="file" required accept="image/gif, image/jpeg, image/png" name="cover" id="cover">
+                                    <i class="ion-image"></i>
+                                    Upload
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="#tags" name="tags" id="tags" data-role="tagsinput">
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit">Post</button>&nbsp;&nbsp;
+                                <button class="btn" type="button" onclick="closePost()">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="link-post">
+                <div class="row">
+                    <div class="col-8">
+                        <h1>Create A New Post</h1>
+                        <form action="newpost.php" class="post-form">
+                            <input type="hidden" value="postlink" name="type" id="type">
+                            <div class="form-group">
+                                <input class="form-control form-control-lg" type="text" placeholder="Link" name="link" id="link" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="#tags" name="tags" id="tags" data-role="tagsinput">
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit">Post</button>&nbsp;&nbsp;
+                                <button class="btn" type="button" onclick="closePost()">Close</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
