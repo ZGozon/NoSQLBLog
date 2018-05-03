@@ -4,14 +4,14 @@
         session_start(); 
     } 
 function register($document){
-  global $users;
-  $users->insert($document);
+  global $userdata;
+  $userdata->insert($document);
   return true;
 }
 
 function chkemail($email){
-  global $users;
-  $temp = $users->findOne(array('Email Address'=> $email));
+  global $userdata;
+  $temp = $userdata->findOne(array('Email Address'=> $email));
   if(empty($temp)){
     return true;
   }
@@ -22,8 +22,8 @@ function chkemail($email){
 
 function setsession($email){
   $_SESSION["userLoggedIn"] = 1;
-  global $users;
-  $temp = $users->findOne(array('Email Address'=> $email));
+  global $userdata;
+  $temp = $userdata->findOne(array('Email Address'=> $email));
   $_SESSION["uname"] = $temp["First Name"];
   $_SESSION["sname"] = $temp["Last Name"];
   $_SESSION["email"] = $email;
@@ -48,26 +48,24 @@ function removeall(){
 }
 
 function addPost($document) {
-  global $post_details;
-  $post_details->insert($document);
+  global $postdata;
+  $postdata->insert($document);
   return true;
 }
 
 function addImage($image){
 
-  global $post_details;
+  // global $postdata;
 
   // $document = array(
   //     "type" => "MCQ",
       
   //     "cover" => new MongoDB\BSON\Binary(file_get_contents($image["tmp_name"]), MongoDB\BSON\Binary::TYPE_GENERIC),
   // );
-  // if ($post_details->insertOne($document)) {
+  // if ($postdata->insertOne($document)) {
   //     return true;
   //     echo "img uploaded!";
   // }
-  $post_details->insert($image);
-  return true;
 }
 
 ?>

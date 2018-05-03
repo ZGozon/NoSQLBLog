@@ -29,7 +29,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="vendor/ionicons/css/ionicons.min.css">
         <link rel="stylesheet" type="text/css" href="css/home.css">
         <style>
             #text-post, #img-post, #link-post {
@@ -100,7 +99,7 @@
                 <div class="col">
                     <div class="options">
                         <button class="btn btn-light btn-lg" onclick="togglePostForm('text-post')">
-                            <i class="ion-document-text"></i><br/>
+                            Aa<br/>
                             Text
                         </button>
                         <button class="btn btn-light btn-lg" onclick="togglePostForm('img-post')">
@@ -119,7 +118,7 @@
                 <div class="row">
                     <div class="col-8">
                         <h1>Create A New Post</h1>
-                        <form action="newpost.php" class="post-form">
+                        <form action="newpost.php">
                             <input type="hidden" value="text" name="type" id="type">
                             <div class="form-group">
                                 <input class="form-control form-control-lg" type="text" placeholder="Title" name="title" id="title">
@@ -143,15 +142,12 @@
                 <div class="row">
                     <div class="col-8">
                         <h1>Create A New Post</h1>                    
-                           <form action="newpost.php" enctype="multipart/form-data" class="post-form">
+                           <form action="newpost.php" enctype="multipart/form-data">
                             <input type="hidden" value="image" name="type" id="type">
                             
                             <div class="form-group">
-                                <label class="upload">
-                                    <input type="file" required accept="image/gif, image/jpeg, image/png" name="cover" id="cover">
-                                    <i class="ion-image"></i>
-                                    Upload
-                                </label>
+                                <!-- <input type="file" required accept="image/gif, image/jpeg, image/png" name="imgdata" id="imgdata"> -->
+                                <input type="file" name="cover">
                             </div>
                             <div class="form-group">
                                 <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
@@ -172,7 +168,7 @@
                 <div class="row">
                     <div class="col-8">
                         <h1>Create A New Post</h1>
-                        <form action="newpost.php" class="post-form">
+                        <form action="newpost.php">
                             <input type="hidden" value="postlink" name="type" id="type">
                             <div class="form-group">
                                 <input class="form-control form-control-lg" type="text" placeholder="Link" name="link" id="link" required>
