@@ -55,6 +55,7 @@
     <!-- Input Mask Plugin -->
     <script src="./assets/plugins/input-mask/plugin.js"></script>
     <script src="js/customjs.js"></script>
+      <script src="vendor/tagsinput/tagsinput.js"></script>
          <style>
             #text-post, #img-post, #link-post {
                 display: none;
@@ -112,7 +113,7 @@
                     </span>
                   </a>
                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="profilepage.php">
                       <i class="dropdown-icon fe fe-user"></i> Profile
                     </a>
                     <a class="dropdown-item" href="#">
@@ -208,7 +209,7 @@
                     <div id="text-post">
                 <div class="row">
                     <div class="col-lg-6 offset-lg-4">
-                        <h1>Create A New Post</h1>
+                        <h3>Create A New Post</h3>
                         <form action="newpost.php" class="post-form">
                             <input type="hidden" value="text" name="type" id="type">
                             <div class="form-group">
@@ -217,9 +218,13 @@
                             <div class="form-group">
                                 <textarea class="form-control" rows="4" name="content" id="content" placeholder="Your text here" required></textarea>
                             </div>
-                            <div class="form-group">
+<!--                             <div class="form-group">
                                 <input class="form-control" type="text" placeholder="#tags" name="tags" id="tags" data-role="tagsinput">
-                            </div>
+                            </div> -->
+                              <div class="form-group">
+                        <label class="form-label">Tags</label>
+                        <input type="text" class="form-control" id="input-tags" name="input-tags">
+                      </div>
                             <div class="form-group">
                                 <button class="btn btn-primary" type="submit">Post</button>&nbsp;&nbsp;
                                 <button class="btn" type="button" onclick="closePost()">Close</button>
@@ -232,7 +237,7 @@
             <div id="img-post">
                 <div class="row">
                     <div class="col-lg-6 offset-lg-4">
-                        <h1>Create A New Post</h1>                    
+                         <h3>Create A New Post</h3>                  
                            <form action="newpost.php" enctype="multipart/form-data" class="post-form">
                             <input type="hidden" value="image" name="type" id="type">
                             
@@ -246,9 +251,10 @@
                             <div class="form-group">
                                 <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
                             </div>
-                            <div class="form-group">
-                                <input class="form-control" type="text" placeholder="#tags" name="tags" id="tags" data-role="tagsinput">
-                            </div>
+                                  <div class="form-group">
+                        <label class="form-label">Tags</label>
+                        <input type="text" class="form-control input-tags" id="input-tags" name="input-tags">
+                      </div>
                             <div class="form-group">
                                 <button class="btn btn-primary" type="submit">Post</button>&nbsp;&nbsp;
                                 <button class="btn" type="button" onclick="closePost()">Close</button>
@@ -261,7 +267,7 @@
             <div id="link-post">
                 <div class="row">
                     <div class="col-lg-6 offset-lg-4">
-                        <h1>Create A New Post</h1>
+                         <h3>Create A New Post</h3>
                         <form action="newpost.php" class="post-form">
                             <input type="hidden" value="postlink" name="type" id="type">
                             <div class="form-group">
@@ -271,8 +277,9 @@
                                 <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="text" placeholder="#tags" name="tags" id="tags" data-role="tagsinput">
-                            </div>
+                        <label class="form-label">Tags</label>
+                        <input type="text" class="form-control input-tag" id="input-tags" name="input-tags">
+                          </div>
                             <div class="form-group">
                                 <button class="btn btn-primary" type="submit">Post</button>&nbsp;&nbsp;
                                 <button class="btn" type="button" onclick="closePost()">Close</button>
@@ -406,5 +413,54 @@
         </div>
       </footer>
     </div>
+
+          <script>
+                require(['jquery', 'selectize'], function ($, selectize) {
+                    $(document).ready(function () {
+                        $('#input-tags').selectize({
+                            delimiter: ',',
+                            persist: false,
+                            create: function (input) {
+                                return {
+                                    value: input,
+                                    text: input
+                                }
+                            }
+                        });
+                
+                
+                    });
+
+                       $(document).ready(function () {
+                        $('.input-tags').selectize({
+                            delimiter: ',',
+                            persist: false,
+                            create: function (input) {
+                                return {
+                                    value: input,
+                                    text: input
+                                }
+                            }
+                        });
+                
+                
+                    });
+
+                                 $(document).ready(function () {
+                        $('.input-tag').selectize({
+                            delimiter: ',',
+                            persist: false,
+                            create: function (input) {
+                                return {
+                                    value: input,
+                                    text: input
+                                }
+                            }
+                        });
+                
+                
+                    });
+                });
+              </script>
   </body>
 </html>
