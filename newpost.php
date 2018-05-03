@@ -40,13 +40,12 @@
           break;
       case "image":
         $fileName = $_GET['cover'];
+        $path = "uploads/";
+        $storedfile = $grid->storeFile($path . $fileName,
+        array("metadata" => array("filename" => $fileName),
+        "filename" => $fileName));
 
-        // $image = $_FILES['image'] = $test1 ;
-        $array = array(
-          "img" => $fileName
-        );
-
-        addImage($array);
+        addImage($storedfile);
 
           break;
       default:
