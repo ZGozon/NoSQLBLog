@@ -1,5 +1,8 @@
 <?php    
     require_once 'library.php';
+    require_once 'connection.php';
+    require_once 'searchLib.php';
+
 
     $name = $_SESSION["uname"];
     $sname = $_SESSION["sname"];
@@ -14,8 +17,17 @@
             echo "Error!";
         }
     }
-    
-        
+
+    // search for produce that is sweet. Taste is a child of Details. 
+    // $sweetQuery = array('Details.Taste' => 'Sweet');
+    // echo "Sweet\n";
+    // $cursor = $collection->find($sweetQuery);
+
+    // $profileID = array('Email Address' => $email);
+    // $profileResult = $db->post_details->find($profileID);
+
+    $result = $db->post_details->find()->sort(array($userId => -1));
+
 ?>
 <html>
 
@@ -61,12 +73,19 @@
   </div>
 </nav> -->
 <div class="container">
+
+
+
+
+
+
   <div class="row">
     <div class="col-md-12 text-center ">
       <div class="content">
         <div class="card">
           <div class="firstinfo">
             <img src="https://s3.amazonaws.com/uifaces/faces/twitter/mrvanz/128.jpg" />
+
             <div class="profileinfo">
               <h1>
                 <?php echo"$name"; ?>
@@ -168,6 +187,48 @@
                   <a href="javascript:void(0)">
                     <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="" class="media-object"> </a>
                 </div>
+
+                <h1>
+              </h1>
+
+              <?php     
+                // foreach ($result as $res) {
+                //     echo "<tr>";
+                //     echo "<td>".$res['title']."</td>"; 
+                //     echo "<td>".$res['content']."</td>";
+                    // echo "<td>".$res['tags']."</td>";       
+                // }
+
+                ?>
+
+              <h1>
+                <?php echo"$userId"; ?>
+              </h1>
+
+              <?php 
+                
+                // echo "<div class='media-body'>";
+                // echo "<p>texst</p>";
+                // echo "</div>";
+                
+                foreach ($result as $r) {
+                  echo "
+                  <div class='media-body'>
+                  <h4 class='media-heading'> ".$r['title']."
+                    <br>
+                    <small>
+                      <i class='fa fa-clock-o'></i> Yesterday, 2:00 am</small>
+                  </h4>
+                  <p>".$r['content']."</p>
+                </div>
+                ";
+                }
+                
+              
+                
+              ?> 
+
+
                 <div class="media-body">
                   <h4 class="media-heading">Lucky Sans
                     <br>
@@ -191,6 +252,10 @@
                     </li>
                   </ul>
                 </div>
+
+
+
+
               </div>
             </div>
             <div class="col-md-12 commentsblock border-top">
