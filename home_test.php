@@ -35,7 +35,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
     <!-- Generated: 2018-04-16 09:29:05 +0200 -->
     <title>Dashboard</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css" integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
     <script src="./assets/js/require.min.js"></script>
     <script>
@@ -54,6 +54,13 @@
     <script src="./assets/plugins/maps-google/plugin.js"></script>
     <!-- Input Mask Plugin -->
     <script src="./assets/plugins/input-mask/plugin.js"></script>
+    <script src="js/customjs.js"></script>
+      <script src="vendor/tagsinput/tagsinput.js"></script>
+         <style>
+            #text-post, #img-post, #link-post {
+                display: none;
+            }
+        </style>
   </head>
   <body class="">
     <div class="page">
@@ -61,7 +68,7 @@
         <div class="header py-4">
           <div class="container">
             <div class="d-flex">
-              <a class="header-brand" href="./index.html">
+              <a class="header-brand" href="home_test.php">
                 <img src="./demo/brand/tabler.svg" class="header-brand-img" alt="tabler logo">
               </a>
               <div class="d-flex order-lg-2 ml-auto">
@@ -106,7 +113,7 @@
                     </span>
                   </a>
                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="profilepage.php">
                       <i class="dropdown-icon fe fe-user"></i> Profile
                     </a>
                     <a class="dropdown-item" href="#">
@@ -164,79 +171,142 @@
 
          <div class="my-3 my-md-5">
           <div class="container">
-            <div class="page-header">
+    <!--         <div class="page-header">
               <h1 class="page-title">
                 Dashboard
               </h1>
-            </div>
+            </div> -->
             <div class="row row-cards">
 
-              <div class="col-lg-6">
+              <!--  first column -->
+              <div class="col-lg-8">
                 <div class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">Development Activity</h3>
-                  </div>
-                  <div id="chart-development-activity" style="height: 10rem"></div>
-                  <div class="table-responsive">
-                    <table class="table card-table table-striped table-vcenter">
-                      <thead>
-                        <tr>
-                          <th colspan="2">User</th>
-                          <th>Commit</th>
-                          <th>Date</th>
-                          <th></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="w-1"><span class="avatar" style="background-image: url(./demo/faces/male/9.jpg)"></span></td>
-                          <td>Ronald Bradley</td>
-                          <td>Initial commit</td>
-                          <td class="text-nowrap">May 6, 2018</td>
-                          <td class="w-1"><a href="#" class="icon"><i class="fe fe-trash"></i></a></td>
-                        </tr>
-                        <tr>
-                          <td><span class="avatar">BM</span></td>
-                          <td>Russell Gibson</td>
-                          <td>Main structure</td>
-                          <td class="text-nowrap">April 22, 2018</td>
-                          <td><a href="#" class="icon"><i class="fe fe-trash"></i></a></td>
-                        </tr>
-                        <tr>
-                          <td><span class="avatar" style="background-image: url(./demo/faces/female/1.jpg)"></span></td>
-                          <td>Beverly Armstrong</td>
-                          <td>Left sidebar adjustments</td>
-                          <td class="text-nowrap">April 15, 2018</td>
-                          <td><a href="#" class="icon"><i class="fe fe-trash"></i></a></td>
-                        </tr>
-                        <tr>
-                          <td><span class="avatar" style="background-image: url(./demo/faces/male/4.jpg)"></span></td>
-                          <td>Bobby Knight</td>
-                          <td>Topbar dropdown style</td>
-                          <td class="text-nowrap">April 8, 2018</td>
-                          <td><a href="#" class="icon"><i class="fe fe-trash"></i></a></td>
-                        </tr>
-                        <tr>
-                          <td><span class="avatar" style="background-image: url(./demo/faces/female/11.jpg)"></span></td>
-                          <td>Sharon Wells</td>
-                          <td>Fixes #625</td>
-                          <td class="text-nowrap">April 9, 2018</td>
-                          <td><a href="#" class="icon"><i class="fe fe-trash"></i></a></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+
+                      <div class="row">
+                <div class="col-md-6 offset-md-4">
+                  <br>
+
+
+                    <div class="options">
+                         <span class="avatar avatar-placeholder"></span>
+                        <button class="btn btn-square btn-outline-secondary btn-lg" onclick="togglePostForm('text-post')">
+                            <i class="fas fa-bold icon-size"></i><br/>
+                            Text
+                        </button>
+                        <button class="btn btn-square btn-outline-info btn-lg" onclick="togglePostForm('img-post')">
+                            <i class="fas fa-camera icon-size"></i><br/>
+                            Photo
+                        </button>
+                        <button class="btn btn-square btn-outline-warning btn-lg" onclick="togglePostForm('link-post')">
+                            <i class="fas fa-link icon-size"></i><br/>
+                            Link
+                        </button>
+                    </div>
+                    <br>
+                </div>
+            </div>
+
+                    <div id="text-post">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-4">
+                        <h3>Create A New Post</h3>
+                        <form action="newpost.php" class="post-form">
+                            <input type="hidden" value="text" name="type" id="type">
+                            <div class="form-group">
+                                <input class="form-control form-control-lg" type="text" placeholder="Title" name="title" id="title">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="4" name="content" id="content" placeholder="Your text here" required></textarea>
+                            </div>
+<!--                             <div class="form-group">
+                                <input class="form-control" type="text" placeholder="#tags" name="tags" id="tags" data-role="tagsinput">
+                            </div> -->
+                              <div class="form-group">
+                        <label class="form-label">Tags</label>
+                        <input type="text" class="form-control" id="input-tags" name="input-tags">
+                      </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit">Post</button>&nbsp;&nbsp;
+                                <button class="btn" type="button" onclick="closePost()">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="img-post">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-4">
+                         <h3>Create A New Post</h3>                  
+                           <form action="newpost.php" enctype="multipart/form-data" class="post-form">
+                            <input type="hidden" value="image" name="type" id="type">
+                            
+                      <!--       <div class="form-group">
+                                <label class="upload">
+                                    <input type="file" required accept="image/gif, image/jpeg, image/png" name="cover" id="cover">
+                                    <i class="ion-image"></i>
+                                    Upload
+                                </label>
+                            </div> -->
+
+                            <div class="custom-file">
+                          <input type="file" class="custom-file-input" required accept="image/gif, image/jpeg, image/png" name="cover" id="cover">
+                          <label class="custom-file-label">Choose file</label>
+                          </div>
+                          <br>
+
+                            <div class="form-group">
+                                <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
+                            </div>
+                                  <div class="form-group">
+                        <label class="form-label">Tags</label>
+                        <input type="text" class="form-control input-tags" id="input-tags" name="input-tags">
+                      </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit">Post</button>&nbsp;&nbsp;
+                                <button class="btn" type="button" onclick="closePost()">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="link-post">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-4">
+                         <h3>Create A New Post</h3>
+                        <form action="newpost.php" class="post-form">
+                            <input type="hidden" value="postlink" name="type" id="type">
+                            <div class="form-group">
+                                <input class="form-control form-control-lg" type="text" placeholder="Link" name="link" id="link" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
+                            </div>
+                            <div class="form-group">
+                        <label class="form-label">Tags</label>
+                        <input type="text" class="form-control input-tag" id="input-tags" name="input-tags">
+                          </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit">Post</button>&nbsp;&nbsp;
+                                <button class="btn" type="button" onclick="closePost()">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+    
                 </div>
               </div>
 
 
-
-              <div class="col-lg-6">
+              <!-- 2nd column -->
+              <div class="col-lg-4">
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title">Development Activity</h3>
+                    <h3 class="card-title">Recommended Blogs</h3>
                   </div>
-                  <div id="chart-development-activity" style="height: 10rem"></div>
                   <div class="table-responsive">
                     <table class="table card-table table-striped table-vcenter">
                       <thead>
@@ -293,7 +363,7 @@
         </div> 
       </div>
     </div>
-
+  </div>
 
       <div class="footer">
         <div class="container">
@@ -341,17 +411,63 @@
                     <li class="list-inline-item"><a href="./faq.html">FAQ</a></li>
                   </ul>
                 </div>
-                <div class="col-auto">
-                  <a href="https://github.com/tabler/tabler" class="btn btn-outline-primary btn-sm">Source code</a>
-                </div>
               </div>
             </div>
             <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
-              Copyright © 2018 <a href=".">Tabler</a>. Theme by <a href="https://codecalm.net" target="_blank">codecalm.net</a> All rights reserved.
+              Copyright © 2018 All rights reserved.
             </div>
           </div>
         </div>
       </footer>
     </div>
+
+          <script>
+                require(['jquery', 'selectize'], function ($, selectize) {
+                    $(document).ready(function () {
+                        $('#input-tags').selectize({
+                            delimiter: ',',
+                            persist: false,
+                            create: function (input) {
+                                return {
+                                    value: input,
+                                    text: input
+                                }
+                            }
+                        });
+                
+                
+                    });
+
+                       $(document).ready(function () {
+                        $('.input-tags').selectize({
+                            delimiter: ',',
+                            persist: false,
+                            create: function (input) {
+                                return {
+                                    value: input,
+                                    text: input
+                                }
+                            }
+                        });
+                
+                
+                    });
+
+                                 $(document).ready(function () {
+                        $('.input-tag').selectize({
+                            delimiter: ',',
+                            persist: false,
+                            create: function (input) {
+                                return {
+                                    value: input,
+                                    text: input
+                                }
+                            }
+                        });
+                
+                
+                    });
+                });
+              </script>
   </body>
 </html>

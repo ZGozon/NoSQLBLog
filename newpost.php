@@ -12,7 +12,7 @@
   if(isset($_REQUEST['type']) &&  !empty($_REQUEST['type'])) {
     $type = $_GET['type'];
     $content = $_GET['content'];
-    $tags = $_GET['tags'];
+    $tags = $_GET['input-tags'];
     $tags = explode(",", $tags);
     switch ($type) {
       case "text":
@@ -21,7 +21,7 @@
           "type" => $type,
           "title" => $title,
           "content" => $content,
-          "tags" => $tags
+          "input-tags" => $tags
         );
           addPost($arrays);
           break;
@@ -31,14 +31,14 @@
           "type" => $type,
           "link" => $link,
           "caption" => $content,
-          "tags" => $tags 
+          "input-tags" => $tags 
         );
           addPost($arrays);
           break;
       case "image":
-        $test1 = $_GET['cover'];
-        $image = $_FILES['image'] = $test1 ;
-        addImage($image);
+        // $test1 = $_GET['cover'];
+        // $image = $_FILES['image'] = $test1 ;
+        // addImage($image);
           break;
       default:
           echo "post failed try again!";
