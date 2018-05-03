@@ -26,7 +26,6 @@
           "title" => $title,
           "content" => $content,
           "input-tags" => $tags,
-          "comments" => $comments,
           "date_posted" => $date,
           "comments_count" => $comments_count
         );
@@ -38,8 +37,7 @@
           "type" => $type,
           "link" => $link,
           "caption" => $content,
-          "input-tags" => $tags ,
-          "comments" => $comments,
+          "input-tags" => $tags,
           "date_posted" => $date,
           "comments_count" => $comments_count
         );
