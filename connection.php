@@ -3,10 +3,10 @@
     $m = new MongoClient();
      //echo "Connection to database Successfull!";echo"<br />";
 
-    $db = $m->blogProj;
+    $db = $m->loginreg;
     //echo "Databse loginreg selected";
-    $users = $db->users; 
-    $post_details = $db->post_details;
+    $userdata = $db->userdata; 
+    $postdata = $db->postdata;
     //echo "Collection userdata Selected Successfully";
     }
     catch (Exception $e){

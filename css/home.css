@@ -35,20 +35,3 @@
 .nav>li>a.userdd {
   padding: 5px 15px
 }
-
-.upload input[type="file"] {
-  display: none !important;
-}
-
-.upload i {
-  color: #d26e25 !important;
-  font-size: 130%;
-  margin: 0 1rem;
-}
-
-.upload {
-  display: inline-block;
-  color: #757575 !important;
-  text-transform: uppercase;
-  cursor: pointer;
-}

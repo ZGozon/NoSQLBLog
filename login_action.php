@@ -15,7 +15,7 @@
         $email = $_POST['email'];
         $upass = $_POST['pass'];
         $criteria = array("Email Address"=> $email);
-        $query = $users->findOne($criteria);
+        $query = $userdata->findOne($criteria);
         //var_dump($query);
         if(empty($query)){
             header("Location: loginFail.php");
