@@ -35,7 +35,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
     <!-- Generated: 2018-04-16 09:29:05 +0200 -->
     <title>Dashboard</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css" integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
     <script src="./assets/js/require.min.js"></script>
     <script>
@@ -182,27 +182,32 @@
                 <div class="card">
 
                       <div class="row">
-                <div class="col">
+                <div class="col-md-6 offset-md-4">
+                  <br>
+
+
                     <div class="options">
-                        <button class="btn btn-light btn-lg" onclick="togglePostForm('text-post')">
-                            <i class="ion-document-text"></i><br/>
+                         <span class="avatar avatar-placeholder"></span>
+                        <button class="btn btn-square btn-outline-secondary btn-lg" onclick="togglePostForm('text-post')">
+                            <i class="fas fa-bold icon-size"></i><br/>
                             Text
                         </button>
-                        <button class="btn btn-light btn-lg" onclick="togglePostForm('img-post')">
-                            <i class="ion-camera"></i><br/>
+                        <button class="btn btn-square btn-outline-info btn-lg" onclick="togglePostForm('img-post')">
+                            <i class="fas fa-camera icon-size"></i><br/>
                             Photo
                         </button>
-                        <button class="btn btn-light btn-lg" onclick="togglePostForm('link-post')">
-                            <i class="ion-link"></i><br/>
+                        <button class="btn btn-square btn-outline-warning btn-lg" onclick="togglePostForm('link-post')">
+                            <i class="fas fa-link icon-size"></i><br/>
                             Link
                         </button>
                     </div>
+                    <br>
                 </div>
             </div>
 
                     <div id="text-post">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-lg-6 offset-lg-4">
                         <h1>Create A New Post</h1>
                         <form action="newpost.php" class="post-form">
                             <input type="hidden" value="text" name="type" id="type">
@@ -226,7 +231,7 @@
 
             <div id="img-post">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-lg-6 offset-lg-4">
                         <h1>Create A New Post</h1>                    
                            <form action="newpost.php" enctype="multipart/form-data" class="post-form">
                             <input type="hidden" value="image" name="type" id="type">
@@ -255,7 +260,7 @@
 
             <div id="link-post">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-lg-6 offset-lg-4">
                         <h1>Create A New Post</h1>
                         <form action="newpost.php" class="post-form">
                             <input type="hidden" value="postlink" name="type" id="type">
