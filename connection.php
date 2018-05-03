@@ -2,7 +2,6 @@
     try{
     $m = new MongoClient();
      //echo "Connection to database Successfull!";echo"<br />";
-
     $db = $m->blogProj;
     //echo "Databse loginreg selected";
     $users = $db->users; 

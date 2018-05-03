@@ -9,14 +9,11 @@
   else{
     header("Location: login.php");
   }
-
   if(isset($_REQUEST['type']) &&  !empty($_REQUEST['type'])) {
-
     $type = $_GET['type'];
     $content = $_GET['content'];
     $tags = $_GET['tags'];
     $tags = explode(",", $tags);
-
     switch ($type) {
       case "text":
         $title = $_GET['title'];
@@ -39,27 +36,17 @@
           addPost($arrays);
           break;
       case "image":
-        $fileName = $_GET['cover'];
-
-        // $image = $_FILES['image'] = $test1 ;
-        $array = array(
-          "img" => $fileName
-        );
-
-        addImage($array);
-
+        $test1 = $_GET['cover'];
+        $image = $_FILES['image'] = $test1 ;
+        addImage($image);
           break;
       default:
           echo "post failed try again!";
     }
   }
-
-
   // if(isset($_REQUEST['type']) &&  !empty($_REQUEST['type'])) {
-
   //   $type = $_GET['type'];
   //   echo $type;
-
   //   $type = $_GET['type'];
   //   $content = $_GET['content'];
   //   $tags = $_GET['tags'];
@@ -71,7 +58,6 @@
   //       "content" => $content,
   //       "tags" => $tags
   //     );
-
   //     print_r($arrays);
   //   } else if($type === 'img') {
   //     $imgdata = $_GET['imgdata'];
@@ -105,7 +91,6 @@
   //     // $test = "testingWorkpls";
   //     addTEST($arrays);
   //           //   $test = "testingWorkpls";
-
   //           // addPost($test);
   // }
 ?>
