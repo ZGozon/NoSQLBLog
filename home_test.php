@@ -164,79 +164,47 @@
 
          <div class="my-3 my-md-5">
           <div class="container">
-            <div class="page-header">
+    <!--         <div class="page-header">
               <h1 class="page-title">
                 Dashboard
               </h1>
-            </div>
+            </div> -->
             <div class="row row-cards">
 
-              <div class="col-lg-6">
+              <!--  first column -->
+              <div class="col-lg-8">
                 <div class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">Development Activity</h3>
-                  </div>
-                  <div id="chart-development-activity" style="height: 10rem"></div>
-                  <div class="table-responsive">
-                    <table class="table card-table table-striped table-vcenter">
-                      <thead>
-                        <tr>
-                          <th colspan="2">User</th>
-                          <th>Commit</th>
-                          <th>Date</th>
-                          <th></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="w-1"><span class="avatar" style="background-image: url(./demo/faces/male/9.jpg)"></span></td>
-                          <td>Ronald Bradley</td>
-                          <td>Initial commit</td>
-                          <td class="text-nowrap">May 6, 2018</td>
-                          <td class="w-1"><a href="#" class="icon"><i class="fe fe-trash"></i></a></td>
-                        </tr>
-                        <tr>
-                          <td><span class="avatar">BM</span></td>
-                          <td>Russell Gibson</td>
-                          <td>Main structure</td>
-                          <td class="text-nowrap">April 22, 2018</td>
-                          <td><a href="#" class="icon"><i class="fe fe-trash"></i></a></td>
-                        </tr>
-                        <tr>
-                          <td><span class="avatar" style="background-image: url(./demo/faces/female/1.jpg)"></span></td>
-                          <td>Beverly Armstrong</td>
-                          <td>Left sidebar adjustments</td>
-                          <td class="text-nowrap">April 15, 2018</td>
-                          <td><a href="#" class="icon"><i class="fe fe-trash"></i></a></td>
-                        </tr>
-                        <tr>
-                          <td><span class="avatar" style="background-image: url(./demo/faces/male/4.jpg)"></span></td>
-                          <td>Bobby Knight</td>
-                          <td>Topbar dropdown style</td>
-                          <td class="text-nowrap">April 8, 2018</td>
-                          <td><a href="#" class="icon"><i class="fe fe-trash"></i></a></td>
-                        </tr>
-                        <tr>
-                          <td><span class="avatar" style="background-image: url(./demo/faces/female/11.jpg)"></span></td>
-                          <td>Sharon Wells</td>
-                          <td>Fixes #625</td>
-                          <td class="text-nowrap">April 9, 2018</td>
-                          <td><a href="#" class="icon"><i class="fe fe-trash"></i></a></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+
+                      <div class="row">
+                <div class="col">
+                    <div class="options">
+                        <button class="btn btn-light btn-lg" onclick="togglePostForm('text-post')">
+                            <i class="ion-document-text"></i><br/>
+                            Text
+                        </button>
+                        <button class="btn btn-light btn-lg" onclick="togglePostForm('img-post')">
+                            <i class="ion-camera"></i><br/>
+                            Photo
+                        </button>
+                        <button class="btn btn-light btn-lg" onclick="togglePostForm('link-post')">
+                            <i class="ion-link"></i><br/>
+                            Link
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+    
                 </div>
               </div>
 
 
-
-              <div class="col-lg-6">
+              <!-- 2nd column -->
+              <div class="col-lg-4">
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title">Development Activity</h3>
+                    <h3 class="card-title">Recommended Blogs</h3>
                   </div>
-                  <div id="chart-development-activity" style="height: 10rem"></div>
                   <div class="table-responsive">
                     <table class="table card-table table-striped table-vcenter">
                       <thead>
@@ -293,7 +261,7 @@
         </div> 
       </div>
     </div>
-
+  </div>
 
       <div class="footer">
         <div class="container">
@@ -341,13 +309,10 @@
                     <li class="list-inline-item"><a href="./faq.html">FAQ</a></li>
                   </ul>
                 </div>
-                <div class="col-auto">
-                  <a href="https://github.com/tabler/tabler" class="btn btn-outline-primary btn-sm">Source code</a>
-                </div>
               </div>
             </div>
             <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
-              Copyright © 2018 <a href=".">Tabler</a>. Theme by <a href="https://codecalm.net" target="_blank">codecalm.net</a> All rights reserved.
+              Copyright © 2018 All rights reserved.
             </div>
           </div>
         </div>
