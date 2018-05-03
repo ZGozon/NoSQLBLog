@@ -98,7 +98,7 @@
                 </div>
                 <div class="dropdown">
                   <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
-                    <span class="avatar" style="background-image: url(./demo/faces/female/25.jpg)"></span>
+                    <span class="avatar avatar-placeholder"></span>
                     <span class="ml-2 d-none d-lg-block">
                       <span class="text-default"> <?php echo"$name"; ?>
                       <?php echo"$sname"; ?></span>
