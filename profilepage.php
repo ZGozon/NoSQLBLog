@@ -196,6 +196,11 @@
                           <br>
                         </h2>
                         <p>".$r['content']."</p>
+                        <br>";
+                        foreach ($r['input-tags'] as $tags) {
+                          echo" <small>#".$tags."</small>";
+                        } 
+                        echo"
                         <br>
                         <small>
                           <i class='fa fa-clock-o'></i> ".$r['date_posted']." 
@@ -208,13 +213,6 @@
               }
 
               ?>
-
-
-            
-
-              <!-- </div>
-            </div> -->
-
 
             <div class="col-md-12 commentsblock border-top">
               <!-- <div class="media">
@@ -269,10 +267,6 @@
                 </li>
               </ul>
             </div>
-
-
-
-
 
             <div class="col-md-12">
               <div class="media">
