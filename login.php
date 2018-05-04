@@ -1,7 +1,7 @@
 <?php
     require_once 'library.php';
     if(chkLogin()){
-        header("Location: home_test.php");
+        header("Location: home.php");
     }
 ?>
 <!DOCTYPE html>
