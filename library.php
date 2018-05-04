@@ -42,10 +42,29 @@ function removeall(){
   unset($_SESSION["email"]);
   return true;
 }
-function addPost($document) {
+function addPost($document, $email) {
   global $post_details;
+  global $users;
+  global $posts;
   $post_details->insert($document);
-  return true;
+  $post_details_id = $document['_id'];
+  $userQuery = array('Email Address' => $email);
+  $cursor = $users->find($userQuery);
+  foreach ($cursor as $doc) {
+    $userId = $doc['_id'];
+  }
+  $summary = (object)[
+    "title" => $document['title'],
+    "date_posted" => $document['date_posted'],
+    "tags" => $document['input-tags']
+  ];
+  $posts_array = array(
+    "post_details_id" => $post_details_id,
+    "author" => $userId,
+    "comments" => array(),
+    "summary" => $summary
+  );
+  $posts->insert($posts_array);
 }
 function addImage($image){
 
