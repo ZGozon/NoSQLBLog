@@ -192,12 +192,14 @@
                         <img src='https://bootdey.com/img/Content/avatar/avatar3.png';  class='media-object'> </a>
                       </div>
                       <div class='media-body'>
-                        <h4 class='media-heading'> ".$r['title']."
+                        <h2 class='media-heading'> ".$r['title']."
                           <br>
-                          <small>
-                            <i class='fa fa-clock-o'></i> ".$r['date_posted']." </small>
-                        </h4>
+                        </h2>
                         <p>".$r['content']."</p>
+                        <br>
+                        <small>
+                          <i class='fa fa-clock-o'></i> ".$r['date_posted']." 
+                        </small>
                       </div>
                     </div>
                   </div>
