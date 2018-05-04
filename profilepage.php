@@ -73,12 +73,6 @@
   </div>
 </nav> -->
 <div class="container">
-
-
-
-
-
-
   <div class="row">
     <div class="col-md-12 text-center ">
       <div class="content">
@@ -198,7 +192,8 @@
                         <p>".$r['content']."</p>
                         <br>";
                         foreach ($r['input-tags'] as $tags) {
-                          echo" <small>#".$tags."</small>";
+                          // echo" <small>#".$tags."</small>";
+                        echo"<a href='' title=''> <i class='glyphicon glyphicon-thumbs-up'></i>#".$tags."</a>";
                         } 
                         echo"
                         <br>
@@ -211,47 +206,9 @@
                   <hr>
                 ";
               }
+            ?>
 
-              ?>
-
-            <div class="col-md-12 commentsblock border-top">
-              <!-- <div class="media">
-                <div class="media-left">
-                  <a href="javascript:void(0)">
-                    <img alt="64x64" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="media-object"> </a>
-                </div>
-                <div class="media-body">
-                  <h4 class="media-heading">Astha Smith</h4>
-                  <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras
-                    purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
-                    fringilla. Donec lacinia congue felis in faucibus.</p>
-                </div>
-              </div>
-              <div class="media">
-                <div class="media-left">
-                  <a href="javascript:void(0)">
-                    <img alt="64x64" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="media-object"> </a>
-                </div>
-                <div class="media-body">
-                  <h4 class="media-heading">Lucky Sans</h4>
-                  <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras
-                    purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
-                    fringilla. Donec lacinia congue felis in faucibus. </p>
-                  <div class="media">
-                    <div class="media-left">
-                      <a href="javascript:void(0)">
-                        <img alt="64x64" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="media-object"> </a>
-                    </div>
-                    <div class="media-body">
-                      <h4 class="media-heading">Astha Smith</h4>
-                      <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.
-                        Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
-                        vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> -->
+        <div class="col-md-12 commentsblock border-top">
           </div>
           <div class="panel panel-default">
             <div class="btn-group pull-right postbtn">
@@ -285,7 +242,8 @@
                   <ul class="nav nav-pills pull-left ">
                     <li>
                       <a href="" title="">
-                        <i class="glyphicon glyphicon-thumbs-up"></i> 2015</a>
+                        <i class="glyphicon glyphicon-thumbs-up"></i> 2015
+                      </a>
                     </li>
                     <li>
                       <a href="" title="">
