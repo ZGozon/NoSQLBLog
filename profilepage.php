@@ -190,15 +190,24 @@
                           <br>
                         </h2>
                         <p>".$r['content']."</p>
-                        <br>";
+                        <br>
+                        <small class='nav nav-pills pull-left'>tags:&nbsp</small>
+                        ";
                         foreach ($r['input-tags'] as $tags) {
-                          // echo" <small>#".$tags."</small>";
-                        echo"<a href='' title=''> <i class='glyphicon glyphicon-thumbs-up'></i>#".$tags."</a>";
+                        echo"
+                          <ul class='nav nav-pills pull-left'>
+                          <li>
+                            <a href='' title=''>
+                              <i class='glyphicon glyphicon-thumbs-up'></i>#".$tags." 
+                            </a> &nbsp
+                          </li>
+                        </ul>
+                        ";
                         } 
                         echo"
                         <br>
-                        <small>
-                          <i class='fa fa-clock-o'></i> ".$r['date_posted']." 
+                        <small class='nav nav-pills pull-left'>
+                          ".$r['date_posted']." 
                         </small>
                       </div>
                     </div>
