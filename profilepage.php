@@ -186,7 +186,7 @@
                         <img src='https://bootdey.com/img/Content/avatar/avatar3.png';  class='media-object'> </a>
                       </div>
                       <div class='media-body'>
-                        <h2 class='media-heading'> ".$r['title']."
+                        <h2 class='media-heading' style='color:black;'> ".$r['title']."
                           <br>
                         </h2>
                         <p>".$r['content']."</p>
