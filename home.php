@@ -20,6 +20,8 @@ $result = $db->post_details->find()->sort(array('_id' => -1));
 
 $userResult = $db->users->find()->sort(array('_id' => -1));
 
+
+
 ?>
 <!doctype html>
 <html lang="en" dir="ltr">
@@ -73,7 +75,7 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
           <div class="container">
             <div class="d-flex">
               <a class="header-brand" href="home.php">
-                <img src="./demo/brand/tabler.svg" class="header-brand-img" alt="tabler logo">
+                <img src="images/logo.gif" class="header-brand-img" alt="tabler logo">
               </a>
               <div class="d-flex order-lg-2 ml-auto">
                <!--  <div class="dropdown d-none d-md-flex">
@@ -109,7 +111,7 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                 </div> -->
                 <div class="dropdown">
                   <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
-                    <span class="avatar avatar-placeholder"></span>
+                    <span class="avatar avatar-placeholder "></span>
                     <span class="ml-2 d-none d-lg-block">
                       <span class="text-default"> <?php echo"$name"; ?>
                       <?php echo"$sname"; ?></span>
@@ -152,7 +154,9 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
         <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
           <div class="container">
             <div class="row align-items-center">
+
               <div class="col-lg-3 ml-auto">
+
                 <form class="input-icon my-3 my-lg-0">
                   <input type="search" class="form-control header-search" placeholder="Search&hellip;" tabindex="1">
                   <div class="input-icon-addon">
@@ -183,7 +187,7 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
             <div class="row row-cards">
 
               <!--  first column -->
-              <div class="col-lg-8">
+              <div class="col-lg-8 ">
                 <div class="card">
 
                       <div class="row">
@@ -192,7 +196,7 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
 
 
                     <div class="options">
-                         <span class="avatar avatar-placeholder"></span>
+                         <span class="avatar avatar-placeholder avatar-lg"></span>
                         <button class="btn btn-square btn-outline-secondary btn-lg" onclick="togglePostForm('text-post')">
                             <i class="fas fa-bold icon-size"></i><br/>
                             Text
@@ -298,19 +302,34 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> 
+                </div>
+
 
              <?php     
     foreach ($result as $res) {
-        echo "<tr>";
-        echo "<td>".$res['title']."</td>"; 
-        echo "<td>".$res['content']."</td>";
-        // echo "<td>".$res['tags']."</td>";       
-    }
-    ?>
 
-    
-                </div>
+      echo"
+
+                    <div class=\"card card-aside\">
+                    <div class=\"card-body d-flex flex-column\">
+                     <h4><a href=\"#\">".$res['title']."</a></h4>
+                    <div class=\"text-muted\">".$res['content']."</div>
+                    <div class=\"d-flex align-items-center pt-5 mt-auto\">
+                      <div class=\"avatar avatar-placeholder avatar-purple mr-3\"></div>
+                      <div>
+                        <a href=\"./profile.html\" class=\"text-default\">".$name.' '.$sname."</a>
+                        <span class=\"tag  d-block \">".implode($res['input-tags'])."</span>
+                      </div>
+                      <div class=\"ml-auto text-red\">
+                        <a href=\"#\" class=\"icon d-none d-md-inline-block ml-3\"><i class=\"fe fe-message-circle mr-1\"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>";
+              }
+?>
+
               </div>
 
 
@@ -396,15 +415,7 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
         <div class="container">
           <div class="row align-items-center flex-row-reverse">
             <div class="col-auto ml-lg-auto">
-              <div class="row align-items-center">
-                <div class="col-auto">
-                  <ul class="list-inline list-inline-dots mb-0">
-                    <li class="list-inline-item"><a href="./docs/index.html">Documentation</a></li>
-                    <li class="list-inline-item"><a href="./faq.html">FAQ</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+
             <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
               Copyright © 2018 All rights reserved.
             </div>
