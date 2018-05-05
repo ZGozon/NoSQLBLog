@@ -20,6 +20,8 @@ $result = $db->post_details->find()->sort(array('_id' => -1));
 
 $userResult = $db->users->find()->sort(array('_id' => -1));
 
+
+
 ?>
 <!doctype html>
 <html lang="en" dir="ltr">
@@ -73,7 +75,7 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
           <div class="container">
             <div class="d-flex">
               <a class="header-brand" href="home.php">
-                <img src="./demo/brand/tabler.svg" class="header-brand-img" alt="tabler logo">
+                <img src="images/logo.gif" class="header-brand-img" alt="tabler logo">
               </a>
               <div class="d-flex order-lg-2 ml-auto">
                <!--  <div class="dropdown d-none d-md-flex">
@@ -109,7 +111,7 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                 </div> -->
                 <div class="dropdown">
                   <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
-                    <span class="avatar avatar-placeholder"></span>
+                    <span class="avatar avatar-placeholder "></span>
                     <span class="ml-2 d-none d-lg-block">
                       <span class="text-default"> <?php echo"$name"; ?>
                       <?php echo"$sname"; ?></span>
