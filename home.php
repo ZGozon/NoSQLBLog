@@ -64,12 +64,15 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
   <script src="./assets/plugins/input-mask/plugin.js"></script>
   <script src="js/customjs.js"></script>
   <script src="vendor/tagsinput/tagsinput.js"></script>
+
   <style>
     #text-post,
     #img-post,
-    #link-post {
+    #link-post,
+    #commentBox {
       display: none;
     }
+
   </style>
 </head>
 
@@ -317,22 +320,44 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                       <div class='avatar avatar-placeholder avatar-purple mr-3'></div>
                       <div>
                         <a href='./profile.html' class='text-default'>".$name.' '.$sname."</a>";
+                        echo"<br>";
                         foreach ($res['input-tags'] as $tags) {
-                          echo"<span class='tag  d-block '>".$tags."</span>";
+
+                          echo"&nbsp;<span class='tag'>".$tags."  </span>";
                           } 
                           echo "
-                        <span class='tag  d-block'>".implode($res['input-tags'])."</span>
                       </div>
                       <div class='ml-auto text-red'>
-                        <a href='#' class='icon d-none d-md-inline-block ml-3'><i class='fe fe-message-circle mr-1'></i></a>
+                        <a id=\"comment_button\" class='icon d-none d-md-inline-block ml-3'><i class='fe fe-message-circle mr-1'></i></a>
                       </div>
                     </div>
+                    </br>
+
+                      <div id=\"commentBox\">
+                      <ul class=\"media-list\">
+                            <li class=\"media mt-4\">
+                              <div class=\"media-object avatar mr-4\" style=\"background-image: url(demo/faces/female/17.jpg)\"></div>
+                              <div class=\"media-body\">
+                                <strong>Debra Beck: </strong>
+                                  <div class=\"form-group\">
+                          <input class=\"form-control form-control-lg\" type=\"text\" placeholder=\"Enter your comment\" name=\"comment\" id=\"comment\">
+                        </div>
+                              </div>
+                            </li>
+
+                          </ul>
+                          </div>
                   </div>
+
                 </div>";
+
               }
               ?>
 
+
             </div>
+
+
 
             <!-- 2nd column -->
             <div class="col-lg-4">
@@ -345,8 +370,8 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                     <thead>
                       <tr>
                         <th colspan="2">User</th>
-                        <th>Commit</th>
-                        <th>Date</th>
+                        <th></th>
+                
                         <th></th>
                       </tr>
                     </thead>
@@ -357,8 +382,8 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                             <tr>
                               <td class='w-1'><span class='avatar' style='background-image: url(./demo/faces/male/9.jpg)'></span></td>
                               <td>".$user['First Name']." ".$user['Last Name']."</td>
-                              <td>Blogger</td>
-                              <td class='text-nowrap'>May 6, 2018</td>
+                              <td><a href=\"#\" class=\"btn btn btn-info\"><i class=\"fas fa-plus\"></i>Follow</a></td>
+                         
                               <td class='w-1'></td>
                             </tr>
                           ";
@@ -486,8 +511,14 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
           });
 
         });
+
+        $('#comment_button').click(function(){
+   $('#commentBox').toggle() 
+});
       });
     </script>
+
+ 
 
 </body>
 
