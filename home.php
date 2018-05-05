@@ -298,19 +298,33 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> 
+                </div>
+
 
              <?php     
     foreach ($result as $res) {
-        echo "<tr>";
-        echo "<td>".$res['title']."</td>"; 
-        echo "<td>".$res['content']."</td>";
-        // echo "<td>".$res['tags']."</td>";       
-    }
-    ?>
 
-    
-                </div>
+      echo"
+
+                    <div class=\"card card-aside\">
+                    <div class=\"card-body d-flex flex-column\">
+                     <h4><a href=\"#\">".$res['title']."</a></h4>
+                    <div class=\"text-muted\">".$res['content']."</div>
+                    <div class=\"d-flex align-items-center pt-5 mt-auto\">
+                      <div class=\"avatar avatar-placeholder mr-3\"></div>
+                      <div>
+                        <a href=\"./profile.html\" class=\"text-default\">".$name.' '.$sname."</a>
+                      </div>
+                      <div class=\"ml-auto text-red\">
+                        <a href=\"#\" class=\"icon d-none d-md-inline-block ml-3\"><i class=\"fe fe-heart mr-1\"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>";
+              }
+?>
+
               </div>
 
 
