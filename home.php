@@ -370,8 +370,8 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                     <thead>
                       <tr>
                         <th colspan="2">User</th>
-                        <th>Commit</th>
-                        <th>Date</th>
+                        <th></th>
+                
                         <th></th>
                       </tr>
                     </thead>
@@ -382,8 +382,8 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                             <tr>
                               <td class='w-1'><span class='avatar' style='background-image: url(./demo/faces/male/9.jpg)'></span></td>
                               <td>".$user['First Name']." ".$user['Last Name']."</td>
-                              <td>Blogger</td>
-                              <td class='text-nowrap'>May 6, 2018</td>
+                              <td><a href=\"#\" class=\"btn btn btn-info\"><i class=\"fas fa-plus\"></i>Follow</a></td>
+                         
                               <td class='w-1'></td>
                             </tr>
                           ";
