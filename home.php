@@ -314,7 +314,7 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                      <h4><a href=\"#\">".$res['title']."</a></h4>
                     <div class=\"text-muted\">".$res['content']."</div>
                     <div class=\"d-flex align-items-center pt-5 mt-auto\">
-                      <div class=\"avatar avatar-placeholder mr-3\"></div>
+                      <div class=\"avatar avatar-placeholder avatar-purple mr-3\"></div>
                       <div>
                         <a href=\"./profile.html\" class=\"text-default\">".$name.' '.$sname."</a>
                       </div>
