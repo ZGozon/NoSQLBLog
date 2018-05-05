@@ -64,12 +64,15 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
   <script src="./assets/plugins/input-mask/plugin.js"></script>
   <script src="js/customjs.js"></script>
   <script src="vendor/tagsinput/tagsinput.js"></script>
+
   <style>
     #text-post,
     #img-post,
-    #link-post {
+    #link-post,
+    #commentBox {
       display: none;
     }
+
   </style>
 </head>
 
@@ -320,20 +323,41 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                         echo"<br>";
                         foreach ($res['input-tags'] as $tags) {
 
-                          echo"&nbsp;&nbsp;<span class='tag'>".$tags."  </span>";
+                          echo"&nbsp;<span class='tag'>".$tags."  </span>";
                           } 
                           echo "
                       </div>
                       <div class='ml-auto text-red'>
-                        <a href='#' class='icon d-none d-md-inline-block ml-3'><i class='fe fe-message-circle mr-1'></i></a>
+                        <a id=\"comment_button\" class='icon d-none d-md-inline-block ml-3'><i class='fe fe-message-circle mr-1'></i></a>
                       </div>
                     </div>
+                    </br>
+
+                      <div id=\"commentBox\">
+                      <ul class=\"media-list\">
+                            <li class=\"media mt-4\">
+                              <div class=\"media-object avatar mr-4\" style=\"background-image: url(demo/faces/female/17.jpg)\"></div>
+                              <div class=\"media-body\">
+                                <strong>Debra Beck: </strong>
+                                  <div class=\"form-group\">
+                          <input class=\"form-control form-control-lg\" type=\"text\" placeholder=\"Enter your comment\" name=\"comment\" id=\"comment\">
+                        </div>
+                              </div>
+                            </li>
+
+                          </ul>
+                          </div>
                   </div>
+
                 </div>";
+
               }
               ?>
 
+
             </div>
+
+
 
             <!-- 2nd column -->
             <div class="col-lg-4">
@@ -487,8 +511,14 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
           });
 
         });
+
+        $('#comment_button').click(function(){
+   $('#commentBox').toggle() 
+});
       });
     </script>
+
+ 
 
 </body>
 
