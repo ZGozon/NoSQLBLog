@@ -3,7 +3,7 @@
 <?php
     
     if(chkLogin()){
-        header("Location: home_test.php");
+        header("Location: home.php");
     }
 ?>
     <?php
@@ -27,7 +27,7 @@
 //                    echo"<pre>";   
 //                    print_r($_SESSION);
                     if($var){
-                    header("Location: home_test.php");
+                    header("Location: home.php");
                     }
                     else{
                         echo "Some error";

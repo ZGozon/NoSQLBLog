@@ -16,4 +16,14 @@ foreach ($cursor as $doc) {
     $userId = $doc['_id'];
 }
 
+// $postCollection = new MongoCollection($db, 'post_details');
+
+//search for user post
+// $postQuery = array('_id' => $userId);
+
+// $postResult = $postCollection->find($postQuery);
+
+
 ?>
+
+
