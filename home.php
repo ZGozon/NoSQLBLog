@@ -319,7 +319,7 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                         <a href=\"./profile.html\" class=\"text-default\">".$name.' '.$sname."</a>
                       </div>
                       <div class=\"ml-auto text-red\">
-                        <a href=\"#\" class=\"icon d-none d-md-inline-block ml-3\"><i class=\"fe fe-heart mr-1\"></i></a>
+                        <a href=\"#\" class=\"icon d-none d-md-inline-block ml-3\"><i class=\"fe fe-message-circle mr-1\"></i></a>
                       </div>
                     </div>
                   </div>
@@ -412,15 +412,7 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
         <div class="container">
           <div class="row align-items-center flex-row-reverse">
             <div class="col-auto ml-lg-auto">
-              <div class="row align-items-center">
-                <div class="col-auto">
-                  <ul class="list-inline list-inline-dots mb-0">
-                    <li class="list-inline-item"><a href="./docs/index.html">Documentation</a></li>
-                    <li class="list-inline-item"><a href="./faq.html">FAQ</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+
             <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
               Copyright © 2018 All rights reserved.
             </div>
