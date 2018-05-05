@@ -154,7 +154,9 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
         <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
           <div class="container">
             <div class="row align-items-center">
+
               <div class="col-lg-3 ml-auto">
+
                 <form class="input-icon my-3 my-lg-0">
                   <input type="search" class="form-control header-search" placeholder="Search&hellip;" tabindex="1">
                   <div class="input-icon-addon">
@@ -185,7 +187,7 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
             <div class="row row-cards">
 
               <!--  first column -->
-              <div class="col-lg-8">
+              <div class="col-lg-8 ">
                 <div class="card">
 
                       <div class="row">
@@ -194,7 +196,7 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
 
 
                     <div class="options">
-                         <span class="avatar avatar-placeholder"></span>
+                         <span class="avatar avatar-placeholder avatar-lg"></span>
                         <button class="btn btn-square btn-outline-secondary btn-lg" onclick="togglePostForm('text-post')">
                             <i class="fas fa-bold icon-size"></i><br/>
                             Text
@@ -317,6 +319,7 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                       <div class=\"avatar avatar-placeholder avatar-purple mr-3\"></div>
                       <div>
                         <a href=\"./profile.html\" class=\"text-default\">".$name.' '.$sname."</a>
+                        <span class=\"tag  d-block \">".implode($res['input-tags'])."</span>
                       </div>
                       <div class=\"ml-auto text-red\">
                         <a href=\"#\" class=\"icon d-none d-md-inline-block ml-3\"><i class=\"fe fe-message-circle mr-1\"></i></a>
