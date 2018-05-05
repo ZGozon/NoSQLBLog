@@ -339,18 +339,10 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
             <div class="col-lg-4">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Who to Follow</h3>
+                  <h3 class="card-title">Recommended Bloggers</h3>
                 </div>
                 <div class="table-responsive">
                   <table class="table card-table table-striped table-vcenter">
-                    <thead>
-                      <tr>
-                        <th colspan="2">User</th>
-                        <th>Commit</th>
-                        <th>Date</th>
-                        <th></th>
-                      </tr>
-                    </thead>
                     <tbody>
                       <?php 
                         foreach ($userResult as $user ) {
@@ -358,9 +350,7 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                             <tr>
                               <td class='w-1'><span class='avatar' style='background-image: url(./demo/faces/male/9.jpg)'></span></td>
                               <td>".$user['First Name']." ".$user['Last Name']."</td>
-                              <td>Blogger</td>
-                              <td class='text-nowrap'>May 6, 2018</td>
-                              <td class='w-1'></td>
+                              <td><a href='following_action.php?follow=" .$user['Email Address']. "' class='btn btn-square btn-outline-secondary' data-toggle='tooltip' data-placement='left' title='Follow'><i class='fas fa-plus'></i></a></td>
                             </tr>
                           ";
                         }
