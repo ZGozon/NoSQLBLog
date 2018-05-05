@@ -317,11 +317,12 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                       <div class='avatar avatar-placeholder avatar-purple mr-3'></div>
                       <div>
                         <a href='./profile.html' class='text-default'>".$name.' '.$sname."</a>";
+                        echo"<br>";
                         foreach ($res['input-tags'] as $tags) {
-                          echo"<span class='tag  d-block '>".$tags."</span>";
+
+                          echo"&nbsp;&nbsp;<span class='tag'>".$tags."  </span>";
                           } 
                           echo "
-                        <span class='tag  d-block'>".implode($res['input-tags'])."</span>
                       </div>
                       <div class='ml-auto text-red'>
                         <a href='#' class='icon d-none d-md-inline-block ml-3'><i class='fe fe-message-circle mr-1'></i></a>
