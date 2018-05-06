@@ -16,6 +16,7 @@
     $tags = $_GET['input-tags'];
     $tags = explode(",", $tags);
     $comments = array();
+    date_default_timezone_set("Asia/Hong_Kong");
     $date = date("Y/m/d h:i:sa");
     $comments_count = count($comments);
     switch ($type) {
@@ -30,6 +31,10 @@
           "comments_count" => $comments_count
         );
           addPost($arrays, $email);
+          echo ("<script LANGUAGE='JavaScript'>
+    window.alert('Succesfully posted!');
+    window.location.href='home.php';
+    </script>");
           break;
       case "postlink":
         $link = $_GET['link'];
@@ -101,4 +106,8 @@
   //           //   $test = "testingWorkpls";
   //           // addPost($test);
   // }
+
+
+
+  
 ?>
