@@ -149,7 +149,7 @@ function followUser($currentUserEmail, $toFollowEmail) {
     //update followers_count in users
     $getFollowersCount = $users->find(['_id' => $toFollowId]);
     foreach ($getFollowersCount as $doc2) {
-      $followersCount = $doc['followers_count'];
+      $followersCount = $doc2['followers_count'];
     }
     $followersCount = $followersCount + 1;
     $users->update(
