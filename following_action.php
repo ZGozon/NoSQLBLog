@@ -12,6 +12,6 @@
 
   if (isset($_REQUEST['follow']) && !empty($_REQUEST['follow'])) {
     $toFollow = $_REQUEST['follow'];
-    
+    followUser($email, $toFollow);
   }
 ?>

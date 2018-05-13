@@ -42,17 +42,20 @@ function removeall(){
   unset($_SESSION["email"]);
   return true;
 }
-function addPost($document, $email) {
-  global $post_details;
+function getUserId($email) {
   global $users;
-  global $posts;
-  $post_details->insert($document);
-  $post_details_id = $document['_id'];
   $userQuery = array('Email Address' => $email);
   $cursor = $users->find($userQuery);
   foreach ($cursor as $doc) {
     $userId = $doc['_id'];
   }
+  return $userId;
+}
+function addPost($document, $email) {
+  global $post_details;
+  global $posts;
+  $post_details->insert($document);
+  $userId = getUserId($email);
   $summary = (object)[
     "title" => $document['title'],
     "date_posted" => $document['date_posted'],
@@ -88,7 +91,38 @@ function followUser($currentUserEmail, $toFollowEmail) {
   global $user_following;
   global $user_followers;
 
+  $currentUserId = getUserId($currentUserEmail);
+  $toFollowId = getUserId($toFollowEmail);
 
+  $user_following->update(
+    ['user' => $currentUserId],
+    ['$set' =>['following' => array($toFollowId)]],
+    ['upsert' => true]
+  );
+
+  $user_followers->update(
+    ['user' => $toFollowId],
+    ['$set' => ['followers' => array($currentUserId)]],
+    ['upsert' => true]
+  );
+
+  $getFollowingsCount = $users->find(['_id' => $currentUserId]);
+  foreach ($getFollowingsCount as $doc) {
+    $followingsCount = $doc['followings_count'] + 1;
+  }
+  $users->update(
+    ['_id' => $currentUserId],
+    ['$set' => ['followings_count' => $followingsCount]]
+  );
+
+  $getFollowersCount = $users->find(['_id' => $toFollowId]);
+  foreach ($getFollowersCount as $doc2) {
+    $followersCount = $doc['followers_count'] + 1;
+  }
+  $users->update(
+    ['_id' => $toFollowId],
+    ['$set' => ['followers_count' => $followersCount]]
+  );
 }
 
 ?>
