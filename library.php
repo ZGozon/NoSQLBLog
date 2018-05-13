@@ -112,44 +112,55 @@ function followUser($currentUserEmail, $toFollowEmail) {
   foreach ($followingQuerry as $doc) {
     $followingArr = $doc['following'];
   }
-  $followingArr[] = $toFollowId;
-  $user_following->update(
-    ['user' => $currentUserId],
-    ['$set' => ['following' => $followingArr]]
-  );
+  if(in_array($toFollowId, $followingArr)) {
+    echo ("<script LANGUAGE='JavaScript'>
+    window.alert('You are already following this user.');
+    window.location.href='home.php';
+    </script>");
+  } else {
+    $followingArr[] = $toFollowId;
+    $user_following->update(
+      ['user' => $currentUserId],
+      ['$set' => ['following' => $followingArr]]
+    );
 
-  //update 'followers' array in user_followers collection
-  $follwerQuerry = $user_followers->find(['user' => $toFollowId]);
-  foreach ($follwerQuerry as $doc2) {
-    $followerArr = $doc2['followers'];
-  }
-  $followerArr[] = $currentUserId;
-  $user_followers->update(
-    ['user' => $toFollowId],
-    ['$set' => ['followers' => $followerArr]]
-  );
+    //update 'followers' array in user_followers collection
+    $follwerQuerry = $user_followers->find(['user' => $toFollowId]);
+    foreach ($follwerQuerry as $doc2) {
+      $followerArr = $doc2['followers'];
+    }
+    $followerArr[] = $currentUserId;
+    $user_followers->update(
+      ['user' => $toFollowId],
+      ['$set' => ['followers' => $followerArr]]
+    );
 
-  //update followings_count in users
-  $getFollowingsCount = $users->find(['_id' => $currentUserId]);
-  foreach ($getFollowingsCount as $doc) {
-    $followingsCount = $doc['followings_count'];
-  }
-  $followingsCount = $followingsCount + 1;
-  $users->update(
-    ['_id' => $currentUserId],
-    ['$set' => ['followings_count' => $followingsCount]]
-  );
+    //update followings_count in users
+    $getFollowingsCount = $users->find(['_id' => $currentUserId]);
+    foreach ($getFollowingsCount as $doc) {
+      $followingsCount = $doc['followings_count'];
+    }
+    $followingsCount = $followingsCount + 1;
+    $users->update(
+      ['_id' => $currentUserId],
+      ['$set' => ['followings_count' => $followingsCount]]
+    );
 
-  //update followers_count in users
-  $getFollowersCount = $users->find(['_id' => $toFollowId]);
-  foreach ($getFollowersCount as $doc2) {
-    $followersCount = $doc['followers_count'];
+    //update followers_count in users
+    $getFollowersCount = $users->find(['_id' => $toFollowId]);
+    foreach ($getFollowersCount as $doc2) {
+      $followersCount = $doc['followers_count'];
+    }
+    $followersCount = $followersCount + 1;
+    $users->update(
+      ['_id' => $toFollowId],
+      ['$set' => ['followers_count' => $followersCount]]
+    );
+    echo ("<script LANGUAGE='JavaScript'>
+    window.alert('Followed!');
+    window.location.href='home.php';
+    </script>");
   }
-  $followersCount = $followersCount + 1;
-  $users->update(
-    ['_id' => $toFollowId],
-    ['$set' => ['followers_count' => $followersCount]]
-  );
 }
 
 ?>
