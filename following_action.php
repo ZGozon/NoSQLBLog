@@ -11,7 +11,7 @@
   }
 
   if (isset($_REQUEST['follow']) && !empty($_REQUEST['follow'])) {
-    echo $_REQUEST['follow'];
-    echo $name;
+    $toFollow = $_REQUEST['follow'];
+    
   }
 ?>

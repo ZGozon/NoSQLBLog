@@ -18,8 +18,9 @@
     
 $result = $db->post_details->find()->sort(array('_id' => -1));
 
-$userResult = $db->users->find()->sort(array('_id' => -1));
-
+$userResult = $db->users->find([
+  'Email Address' => ['$ne' => $email]
+])->sort(array('followers_count' => -1));
 
 
 ?>
@@ -72,7 +73,15 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
     #commentBox {
       display: none;
     }
-
+    .options span {
+      margin-right: 2rem;
+    }
+    .options button {
+      margin-right: 1rem;
+    }
+    .options button:last-child {
+      margin-right: 0;
+    }
   </style>
 </head>
 
@@ -199,7 +208,7 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
             <div class="col-lg-8 ">
               <div class="card">
                 <div class="row">
-                  <div class="col-md-6 offset-md-4">
+                  <div class="col-md-8 offset-md-2 text-center">
                     <br>
                     <div class="options">
                       <span class="avatar avatar-placeholder avatar-lg"></span>
@@ -221,7 +230,7 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                 </div>
                 <div id="text-post">
                   <div class="row">
-                    <div class="col-lg-6 offset-lg-4">
+                    <div class="col-lg-8 offset-lg-2">
                       <h3>Create A New Post</h3>
                       <form action="newpost.php" class="post-form">
                         <input type="hidden" value="text" name="type" id="type">
@@ -235,12 +244,12 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                                 <input class="form-control" type="text" placeholder="#tags" name="tags" id="tags" data-role="tagsinput">
                             </div> -->
                         <div class="form-group">
-                          <label class="form-label">Tags</label>
-                          <input type="text" class="form-control" id="input-tags" name="input-tags">
+                          <!-- <label class="form-label">Tags</label> -->
+                          <input type="text" class="form-control" id="input-tags" name="input-tags" placeholder="#tags">
                         </div>
                         <div class="form-group">
-                          <button class="btn btn-primary" type="submit">Post</button>&nbsp;&nbsp;
-                          <button class="btn" type="button" onclick="closePost()">Close</button>
+                          <button class="btn btn-square btn-outline-info" type="submit">Post</button>&nbsp;&nbsp;
+                          <button class="btn btn-square btn-outline-secondary" type="button" onclick="closePost()">Close</button>
                         </div>
                       </form>
                     </div>
@@ -249,7 +258,7 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
 
                 <div id="img-post">
                   <div class="row">
-                    <div class="col-lg-6 offset-lg-4">
+                    <div class="col-lg-8 offset-lg-2">
                       <h3>Create A New Post</h3>
                       <form action="newpost.php" enctype="multipart/form-data" class="post-form">
                         <input type="hidden" value="image" name="type" id="type">
@@ -269,12 +278,12 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                           <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
                         </div>
                         <div class="form-group">
-                          <label class="form-label">Tags</label>
-                          <input type="text" class="form-control input-tags" id="input-tags" name="input-tags">
+                          <!-- <label class="form-label">Tags</label> -->
+                          <input type="text" class="form-control input-tags" id="input-tags" name="input-tags" placeholder="#tags">
                         </div>
                         <div class="form-group">
-                          <button class="btn btn-primary" type="submit">Post</button>&nbsp;&nbsp;
-                          <button class="btn" type="button" onclick="closePost()">Close</button>
+                          <button class="btn btn-square btn-outline-info" type="submit">Post</button>&nbsp;&nbsp;
+                          <button class="btn btn-square btn-outline-secondary" type="button" onclick="closePost()">Close</button>
                         </div>
                       </form>
                     </div>
@@ -283,7 +292,7 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
 
                 <div id="link-post">
                   <div class="row">
-                    <div class="col-lg-6 offset-lg-4">
+                    <div class="col-lg-8 offset-lg-2">
                       <h3>Create A New Post</h3>
                       <form action="newpost.php" class="post-form">
                         <input type="hidden" value="postlink" name="type" id="type">
@@ -294,12 +303,12 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                           <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
                         </div>
                         <div class="form-group">
-                          <label class="form-label">Tags</label>
-                          <input type="text" class="form-control input-tag" id="input-tags" name="input-tags">
+                          <!-- <label class="form-label">Tags</label> -->
+                          <input type="text" class="form-control input-tag" id="input-tags" name="input-tags" placeholder="#tags">
                         </div>
                         <div class="form-group">
-                          <button class="btn btn-primary" type="submit">Post</button>&nbsp;&nbsp;
-                          <button class="btn" type="button" onclick="closePost()">Close</button>
+                          <button class="btn btn-square btn-outline-info" type="submit">Post</button>&nbsp;&nbsp;
+                          <button class="btn btn-square btn-outline-secondary" type="button" onclick="closePost()">Close</button>
                         </div>
                       </form>
                     </div>
