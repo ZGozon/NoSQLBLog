@@ -82,4 +82,13 @@ function addImage($image){
   $post_details->insert($image);
   return true;
 }
+
+function followUser($currentUserEmail, $toFollowEmail) {
+  global $users;
+  global $user_following;
+  global $user_followers;
+
+
+}
+
 ?>
