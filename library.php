@@ -5,7 +5,21 @@
     } 
 function register($document){
   global $users;
+  global $user_following;
+  global $user_followers;
   $users->insert($document);
+
+  $followDoc = array(
+    'user' => $document['_id'],
+    'followers' => array()
+  );
+  $user_followers->insert($followDoc);
+
+  $followingDoc = array(
+    'user' => $document['_id'],
+    'following' => array()
+  );
+  $user_following->insert($followingDoc);
   return true;
 }
 function chkemail($email){
@@ -88,37 +102,50 @@ function addImage($image){
 
 function followUser($currentUserEmail, $toFollowEmail) {
   global $users;
-  global $user_following;
   global $user_followers;
-
+  global $user_following;
   $currentUserId = getUserId($currentUserEmail);
   $toFollowId = getUserId($toFollowEmail);
 
+  //update 'following' array in user_following collection
+  $followingQuerry = $user_following->find(['user' => $currentUserId]);
+  foreach ($followingQuerry as $doc) {
+    $followingArr = $doc['following'];
+  }
+  $followingArr[] = $toFollowId;
   $user_following->update(
     ['user' => $currentUserId],
-    ['$set' =>['following' => array($toFollowId)]],
-    ['upsert' => true]
+    ['$set' => ['following' => $followingArr]]
   );
 
+  //update 'followers' array in user_followers collection
+  $follwerQuerry = $user_followers->find(['user' => $toFollowId]);
+  foreach ($follwerQuerry as $doc2) {
+    $followerArr = $doc2['followers'];
+  }
+  $followerArr[] = $currentUserId;
   $user_followers->update(
     ['user' => $toFollowId],
-    ['$set' => ['followers' => array($currentUserId)]],
-    ['upsert' => true]
+    ['$set' => ['followers' => $followerArr]]
   );
 
+  //update followings_count in users
   $getFollowingsCount = $users->find(['_id' => $currentUserId]);
   foreach ($getFollowingsCount as $doc) {
-    $followingsCount = $doc['followings_count'] + 1;
+    $followingsCount = $doc['followings_count'];
   }
+  $followingsCount = $followingsCount + 1;
   $users->update(
     ['_id' => $currentUserId],
     ['$set' => ['followings_count' => $followingsCount]]
   );
 
+  //update followers_count in users
   $getFollowersCount = $users->find(['_id' => $toFollowId]);
   foreach ($getFollowersCount as $doc2) {
-    $followersCount = $doc['followers_count'] + 1;
+    $followersCount = $doc['followers_count'];
   }
+  $followersCount = $followersCount + 1;
   $users->update(
     ['_id' => $toFollowId],
     ['$set' => ['followers_count' => $followersCount]]
