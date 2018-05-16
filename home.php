@@ -1,6 +1,7 @@
 <?php    
     require_once 'library.php';
     require_once 'connection.php';
+    require_once 'searchLib.php';
 
     $name = $_SESSION["uname"];
     $sname = $_SESSION["sname"];
@@ -23,7 +24,7 @@ $userResult = $db->users->find([
 ])->sort(array('followers_count' => -1));
 
 $result = $db->postImages->find()->sort(array('_id' => -1)); // query for getting images
-
+$result_details = $db->post_details->find()->sort(array($userId)); //query for post
 
 ?>
 <!doctype html>
@@ -340,32 +341,49 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
                   </div>
                 </div>
 
-                <?php     
-              foreach ($result as $res) {
-                echo "
-                <div class='pt-4 pb-4'>
-                  <div class='card'>
-                    <div class='card-body'>
-                      <div class='row'>
-                        <div class='col-md-2'><img src='https://bootdey.com/img/Content/avatar/avatar6.png' class='img-fluid rounded-circle'></div>
-                        <div class='col-md-10'>
-                          <h5 class='card-title'>Card title</h5>
-                          <h6 class='card-subtitle mb-2 text-muted'>Card subtitle</h6>
-                          <p class='card-text'>".$res['content']."</p>
-                          <a href='#' class='card-link'>Card link</a>
-                          <a href='#' class='card-link'>Another link</a>
-                        </div>
+                <?php    
+               foreach ($result as $res) {
+                echo"
+                <div class='card card-aside'>
+                  <div class='card-body d-flex flex-column'>
+                      
+                    <div class='text-muted'>".$res['content']."</div>
+                    <div class='d-flex align-items-center pt-5 mt-auto'>
+                      <div class='avatar avatar-placeholder avatar-purple mr-3'></div>
+                      <div>
+                        <a href='./profile.html' class='text-default'>".$name.' '.$sname."</a>";
+                        echo"<br>";
+                       
+                          echo "
+                      </div>
+                      <div class='ml-auto text-red'>
+                        <a id='comment_button' class='icon d-none d-md-inline-block ml-3'><i class='fe fe-message-circle mr-1'></i></a>
                       </div>
                     </div>
+                    </br>
+                    <div id='commentBox'>
+                      <ul class='media-list'>
+                        <li class='media mt-4'>
+                          <div class='media-object avatar mr-4' style='background-image: url(demo/faces/female/17.jpg)'></div>
+                          <div class='media-body'>
+                            <strong>Debra Beck: </strong>
+                              <div class='form-group'>
+                                <input class='form-control form-control-lg' type='text' placeholder='Enter your comment' name='comment' id='comment'>
+                              </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                </div>
-                ";
+                </div>";
               }
               ?>
+              
+
 
 
                 <?php     
-              foreach ($result as $res) {
+              foreach ($result_details as $res) {
                 echo"
                 <div class='card card-aside'>
                   <div class='card-body d-flex flex-column'>
