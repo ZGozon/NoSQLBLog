@@ -427,7 +427,6 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
               }
               ?>
               </div>
-            </div>
 
 
             <!-- 2nd column -->
