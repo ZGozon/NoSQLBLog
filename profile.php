@@ -223,11 +223,21 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
                             <h5>".$name." " .$sname. "</h5>
                           </div>
                            <div>
-                           <h4>
-                           ".$r['title']."
-                  
-                          </h4>
-                           ".$r['content']."
+                           <h4>";
+
+                           echo "<div> <h4>
+                            ".$r['title']."
+                           </h4>
+
+
+                            ".$r['content']."
+                           </div>";
+
+                            foreach ($r['input-tags'] as $tags) {
+
+                          echo"&nbsp;<span class='tag mb-0 mt-3'>".$tags."  </span>";
+                          } 
+                          echo "
                           </div>
                         </div>
                       </div>
@@ -236,6 +246,7 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
                 </div>";
 
                 }?>
+
 
               </div>
             </div>
