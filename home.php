@@ -326,7 +326,7 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
                       <form action="newpost.php" class="post-form">
                         <input type="hidden" value="postlink" name="type" id="type">
                         <div class="form-group">
-                          <input class="form-control form-control-lg" type="text" placeholder="Title" name="title" id="title" required>
+                          <input class="form-control form-control-lg" type="text" placeholder="Link" name="link" id="link" required>
                         </div>
                         <div class="form-group">
                           <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
