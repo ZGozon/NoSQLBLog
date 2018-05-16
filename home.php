@@ -55,23 +55,28 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
   <!-- Include Editor JS files. -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.1/js/froala_editor.pkgd.min.js"></script>
 
-          <!-- Include external CSS. -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <!-- Include external CSS. -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"
+  />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
 
   <!-- Include Editor style. -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css"
+  />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.1/css/froala_style.min.css" rel="stylesheet" type="text/css"
+  />
 
   <!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
   <link href="../css/froala_style.min.css" rel="stylesheet" type="text/css" />
 
 
-  <script> $(function() { $('textarea#froala-editor').froalaEditor({
-      quickInsertButtons: ['image'],
-      pluginsEnabled: ['quickInsert', 'image'] 
-      }) 
-    }); 
+  <script>
+    $(function () {
+      $('textarea#froala-editor').froalaEditor({
+        quickInsertButtons: ['image'],
+        pluginsEnabled: ['quickInsert', 'image']
+      })
+    });
   </script>
 
   <!-- photo post feature dont touch khelly's property -->
@@ -113,12 +118,15 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
     #commentBox {
       display: none;
     }
+
     .options span {
       margin-right: 2rem;
     }
+
     .options button {
       margin-right: 1rem;
     }
+
     .options button:last-child {
       margin-right: 0;
     }
@@ -297,42 +305,42 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
                   <div class="row">
                     <div class="col-lg-8 offset-lg-2">
                       <h3>Create a Photo Post</h3>
-                        <form action="test/postProcess.php" method="POST"> 
-                          <!-- <div id="froala-editor"> -->
-                            <textarea id="froala-editor" name="postContent"></textarea>
-                          <!-- </div> -->
-                          <button type="submit">submit</button>
-                        </form>
-                  </div>
-                </div>
-
-                <div id="link-post">
-                  <div class="row">
-                    <div class="col-lg-8 offset-lg-2">
-                      <h3>Create A New Post</h3>
-                      <form action="newpost.php" class="post-form">
-                        <input type="hidden" value="postlink" name="type" id="type">
-                        <div class="form-group">
-                          <input class="form-control form-control-lg" type="text" placeholder="Link" name="link" id="link" required>
-                        </div>
-                        <div class="form-group">
-                          <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
-                        </div>
-                        <div class="form-group">
-                          <!-- <label class="form-label">Tags</label> -->
-                          <input type="text" class="form-control input-tag" id="input-tags" name="input-tags" placeholder="#tags">
-                        </div>
-                        <div class="form-group">
-                          <button class="btn btn-square btn-outline-info" type="submit">Post</button>&nbsp;&nbsp;
-                          <button class="btn btn-square btn-outline-secondary" type="button" onclick="closePost()">Close</button>
-                        </div>
+                      <form action="test/postProcess.php" method="POST">
+                        <!-- <div id="froala-editor"> -->
+                        <textarea id="froala-editor" name="postContent"></textarea>
+                        <!-- </div> -->
+                        <button type="submit">submit</button>
                       </form>
                     </div>
                   </div>
-                </div>
-              </div>
 
-              <?php     
+                  <div id="link-post">
+                    <div class="row">
+                      <div class="col-lg-8 offset-lg-2">
+                        <h3>Create A New Post</h3>
+                        <form action="newpost.php" class="post-form">
+                          <input type="hidden" value="postlink" name="type" id="type">
+                          <div class="form-group">
+                            <input class="form-control form-control-lg" type="text" placeholder="Link" name="link" id="link" required>
+                          </div>
+                          <div class="form-group">
+                            <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
+                          </div>
+                          <div class="form-group">
+                            <!-- <label class="form-label">Tags</label> -->
+                            <input type="text" class="form-control input-tag" id="input-tags" name="input-tags" placeholder="#tags">
+                          </div>
+                          <div class="form-group">
+                            <button class="btn btn-square btn-outline-info" type="submit">Post</button>&nbsp;&nbsp;
+                            <button class="btn btn-square btn-outline-secondary" type="button" onclick="closePost()">Close</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <?php     
               foreach ($result as $res) {
                 echo "
                 <div class='pt-4 pb-4'>
@@ -356,7 +364,7 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
               ?>
 
 
-              <?php     
+                <?php     
               foreach ($result as $res) {
                 echo"
                 <div class='card card-aside'>
@@ -396,8 +404,8 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
                 </div>";
               }
               ?>
+              </div>
             </div>
-          </div>
 
 
             <!-- 2nd column -->
@@ -535,8 +543,8 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
           });
         });
 
-        $('#comment_button').click(function(){
-          $('#commentBox').toggle() 
+        $('#comment_button').click(function () {
+          $('#commentBox').toggle()
         });
       });
     </script>
