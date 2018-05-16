@@ -305,15 +305,19 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
                 <div id="img-post">
                   <div class="row">
                     <div class="col-lg-8 offset-lg-2">
-                      <h3>Create a Photo Post</h3>
+                      <h3>Create A New Post</h3>
                       <form action="test/postProcess.php" method="POST">
-                        <!-- <div id="froala-editor"> -->
-                        <textarea id="froala-editor" name="postContent"></textarea>
-                        <!-- </div> -->
-                        <button type="submit">submit</button>
+                        <div class="form-group">
+                          <textarea id="froala-editor" name="postContent"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <button class="btn btn-square btn-outline-info" type="submit">Post</button>&nbsp;&nbsp;
+                          <button class="btn btn-square btn-outline-secondary" type="button" onclick="closePost()">Close</button>
+                        </div>
                       </form>
                     </div>
                   </div>
+                </div>
 
                   <div id="link-post">
                     <div class="row">
