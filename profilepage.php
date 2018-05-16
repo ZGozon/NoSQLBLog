@@ -97,15 +97,15 @@
                   </h3>
                 </li>
                 <li role="presentation">
-                  <h3><?php echo($user_followers->count());;?>
+                  <h3><?php echo($user_followers->count()-1);;?>
                     <br>
                     <small>Followers</small>
                   </h3>
                 </li>
                 <li role="presentation">
-                  <h3><?php echo($user_following->count());;?>
+                  <h3><?php echo($user_following->count()-1);;?>
                     <br>
-                    <small>Followwing</small>
+                    <small>Following</small>
                   </h3>
                 </li>
               </ul>
