@@ -218,16 +218,17 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
                       <div class='media'>
                         <span class='avatar avatar-placeholder mr-4'></span>
                         <div class='media-body'>
-                        <h2 class='media-heading' style='color:black;'> ".$r['title']."</h2>
+                         <h4>".$name." " .$sname. "</h4>
+                       
                           <div class='media-heading'>
                             <small class='float-right text-muted'>".$r['date_posted']." </small>
-                            <h5>".$name." " .$sname. "</h5>
+                          
                           </div>
                            <div>
-                           <h4>
+                           <h5>
                            ".$r['title']."
                   
-                          </h4>
+                          </h5>
                            ".$r['content']."
                           </div>
                            <small class='nav nav-pills pull-left'>tags:&nbsp</small>
@@ -245,8 +246,7 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
                         } 
                         echo"
                         <br>
-                        <small class='nav nav-pills pull-left'>
-                          ".$r['date_posted']." 
+                       
                         </small>
                       </div>
                     </div>
