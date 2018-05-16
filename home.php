@@ -74,8 +74,9 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
   <script>
     $(function () {
       $('textarea#froala-editor').froalaEditor({
-        quickInsertButtons: ['image'],
-        pluginsEnabled: ['quickInsert', 'image']
+        placeholderText: 'upload photo',
+        toolbarButtons: ['insertImage'],
+        pluginsEnabled: ['image']
       })
     });
   </script>
@@ -284,7 +285,7 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
                           <input class="form-control form-control-lg" type="text" placeholder="Title" name="title" id="title">
                         </div>
                         <div class="form-group">
-                          <textarea id="froala-editor" rows="4" name="content" required></textarea>
+                          <textarea class="form-control" rows="4" name="content" id="content" placeholder="Your text here" required></textarea>
                         </div>
                         <div class="form-group">
                           <input type="text" class="form-control" id="input-tags" name="input-tags" placeholder="#tags">
@@ -345,7 +346,7 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
                 </div>
               </div>
 
-                <?php    
+              <?php    
                foreach ($result as $res) {
                 echo"
                 <div class='card card-aside'>
@@ -382,11 +383,11 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
                 </div>";
               }
               ?>
-              
 
 
 
-                <?php     
+
+              <?php     
               foreach ($result_details as $res) {
                 echo"
                 <div class='card card-aside'>
@@ -426,7 +427,7 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
                 </div>";
               }
               ?>
-              </div>
+            </div>
 
 
             <!-- 2nd column -->
