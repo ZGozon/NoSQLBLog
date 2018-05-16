@@ -16,20 +16,20 @@
             echo "Error!";
         }
     }
-  $currentUserId = getUserId($email);
-  $followingQuerry = $db->user_following->find(['user' => $currentUserId]);
-  foreach ($followingQuerry as $doc) {
-    $followingArr = $doc['following'];
+  $getPosts = $db->posts->find();
+  foreach ($getPosts as $posts) {
+    $result = $db->post_details->find()->sort(['date_posted' => -1]);
   }
+  
 
-$result = $db->post_details->find()->sort(array('date_posted' => -1));
+// $result = $db->post_details->find()->sort(array('date_posted' => -1));
 
 $recommenBlogger = $db->users->find([
   'Email Address' => ['$ne' => $email]
 ])->sort(array('followers_count' => -1));
 
 // $result = $db->postImages->find()->sort(array('_id' => -1)); // query for getting images
-$result_details = $db->post_details->find()->sort(array('date_posted' => -1)); //query for post
+// $result_details = $db->post_details->find()->sort(array('date_posted' => -1)); //query for post
 
 ?>
 <!doctype html>
@@ -328,47 +328,17 @@ $result_details = $db->post_details->find()->sort(array('date_posted' => -1)); /
                foreach ($result as $res) {
                 echo"
                 <div class='card card-aside'>
-                  <div class='card-body d-flex flex-column'>
+                  <div class='card-body d-flex flex-column'>";
+                  if ($res['type'] === 'text') {
+                    echo "<h4><a href='#'>".$res['title']."</a></h4>";
+                  }
+                  echo
+                  "
                     <div class='text-muted'>".$res['content']."</div>
                     <div class='d-flex align-items-center pt-5 mt-auto'>
                       <div class='avatar avatar-placeholder avatar-purple mr-3'></div>
                       <div>
-                        <a href='./profile.html' class='text-default'>".$name.' '.$sname."</a>
-                      </div>
-                      <div class='ml-auto text-red'>
-                        <a id='comment_button' class='icon d-none d-md-inline-block ml-3'><i class='fe fe-message-circle mr-1'></i></a>
-                      </div>
-                    </div>
-                    </br>
-                    <div id='commentBox'>
-                      <ul class='media-list'>
-                        <li class='media mt-4'>
-                          <div class='media-object avatar mr-4' style='background-image: url(demo/faces/female/17.jpg)'></div>
-                          <div class='media-body'>
-                            <strong>Debra Beck: </strong>
-                              <div class='form-group'>
-                                <input class='form-control form-control-lg' type='text' placeholder='Enter your comment' name='comment' id='comment'>
-                              </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>";
-              }
-              ?>
-
-              <?php    
-              foreach ($result_details as $res) {
-                echo"
-                <div class='card card-aside'>
-                  <div class='card-body d-flex flex-column'>
-                      <h4><a href='#'>".$res['title']."</a></h4>
-                    <div class='text-muted'>".$res['content']."</div>
-                    <div class='d-flex align-items-center pt-5 mt-auto'>
-                      <div class='avatar avatar-placeholder avatar-purple mr-3'></div>
-                      <div>
-                        <a href='./profile.html' class='text-default'>".$name.' '.$sname."</a>";
+                        <a href='./profile.php' class='text-default'>".$name.' '.$sname."</a>";
                         echo"<br>";
                         foreach ($res['input-tags'] as $tags) {
                           echo"&nbsp;<span class='tag'>".$tags."  </span>";

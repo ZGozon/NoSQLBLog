@@ -17,7 +17,7 @@
         }
     }
     
-$result = $db->post_details->find()->sort(array('_id' => -1));
+// $result = $db->post_details->find()->sort(array('_id' => -1));
 
 $userResult = $db->users->find([
   'Email Address' => ['$ne' => $email]
@@ -25,7 +25,7 @@ $userResult = $db->users->find([
 
 $result = $db->postImages->find()->sort(array('_id' => -1)); // query for getting images
 
- $result_details = $db->post_details->find()->sort(array($userId)); //query for post
+ $result_details = $db->post_details->find()->sort(['date_posted' => -1]); //query for post
 
 ?>
 
@@ -205,44 +205,6 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
 
 
               <div class="col-lg-8">
-                   <?php 
-              foreach ($result as $r ) {
-                echo" 
-                <div class='card'>
-                  <ul class='list-group card-list-group'>
-  
-                    <li class='list-group-item py-5'>
-                      <div class='media'>
-                        <span class='avatar avatar-placeholder mr-4'></span>
-                        <div class='media-body'>
-                          <div class='media-heading'>
-                            <small class='float-right text-muted'>".$r['date_posted']." </small>
-                            <h5>".$name." " .$sname. "</h5>
-                          </div>
-                           <div>
-                           <h4>";
-
-                           echo "<div> <h4>
-                       
-                           </h4>
-
-
-                            ".$r['content']."
-                           </div>";
-
-                          echo "
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>";
-
-                }?>
-
-
-
-
                <?php 
               foreach ($result_details as $r ) {
                 echo" 
@@ -255,17 +217,20 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
                         <div class='media-body'>
                           <div class='media-heading'>
                             <small class='float-right text-muted'>".$r['date_posted']." </small>
-                            <h5>".$name." " .$sname. "</h5>
+                            
                           </div>
                            <div>
                            <h4>";
 
-                           echo "<div> <h4>
-                            ".$r['title']."
-                           </h4>
+                           echo "<div> ";
+                           
+                           if($r['type'] === 'text') {
+                             echo "<h4>
+                              ".$r['title']."
+                              </h4>";
+                           }
 
-
-                            ".$r['content']."
+                           echo "<div style='font-weight:normal'>" .$r['content']."</div>
                            </div>";
 
                             foreach ($r['input-tags'] as $tags) {
