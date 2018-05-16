@@ -16,10 +16,15 @@
             echo "Error!";
         }
     }
-    
+  $currentUserId = getUserId($email);
+  $followingQuerry = $db->user_following->find(['user' => $currentUserId]);
+  foreach ($followingQuerry as $doc) {
+    $followingArr = $doc['following'];
+  }
+
 $result = $db->post_details->find()->sort(array('date_posted' => -1));
 
-$userResult = $db->users->find([
+$recommenBlogger = $db->users->find([
   'Email Address' => ['$ne' => $email]
 ])->sort(array('followers_count' => -1));
 
@@ -409,7 +414,7 @@ $result_details = $db->post_details->find()->sort(array('date_posted' => -1)); /
                   <table class="table card-table table-striped table-vcenter">
                     <tbody>
                       <?php 
-                        foreach ($userResult as $user ) {
+                        foreach ($recommenBlogger as $user ) {
                           echo"
                             <tr>
                               <td class='w-1'><span class='avatar' style='background-image: url(./demo/faces/male/9.jpg)'></span></td>
