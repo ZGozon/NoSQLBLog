@@ -73,7 +73,7 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
           <div class="container">
             <div class="d-flex">
               <a class="header-brand" href="home.php">
-                 <img src="images/logo.gif" class="header-brand-img" alt="tabler logo">
+                <img src="./demo/brand/tabler.svg" class="header-brand-img" alt="tabler logo">
               </a>
               <div class="d-flex order-lg-2 ml-auto">
                 <div class="dropdown d-none d-md-flex">
@@ -181,7 +181,7 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
                         </ul>
                     </p>
                     <button class="btn btn-outline-primary btn-sm">
-                      <span class="fa fa-twitter"></span> Follow
+                      <span class="fe fe-plus mr-2"></span> Follow
                     </button>
                   </div>
                 </div>
