@@ -284,13 +284,9 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
                           <input class="form-control form-control-lg" type="text" placeholder="Title" name="title" id="title">
                         </div>
                         <div class="form-group">
-                          <textarea class="form-control" rows="4" name="content" id="content" placeholder="Your text here" required></textarea>
+                          <textarea id="froala-editor" rows="4" name="content" required></textarea>
                         </div>
-                        <!-- <div class="form-group">
-                                <input class="form-control" type="text" placeholder="#tags" name="tags" id="tags" data-role="tagsinput">
-                            </div> -->
                         <div class="form-group">
-                          <!-- <label class="form-label">Tags</label> -->
                           <input type="text" class="form-control" id="input-tags" name="input-tags" placeholder="#tags">
                         </div>
                         <div class="form-group">
@@ -306,9 +302,13 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
                   <div class="row">
                     <div class="col-lg-8 offset-lg-2">
                       <h3>Create A New Post</h3>
-                      <form action="test/postProcess.php" method="POST">
+                      <form action="newpost.php">
+                        <input type="hidden" value="img" name="type" id="type">
                         <div class="form-group">
-                          <textarea id="froala-editor" name="postContent"></textarea>
+                          <textarea id="froala-editor" name="content" required></textarea>
+                        </div>
+                        <div class="form-group">
+                          <input type="text" class="form-control input-tag" id="input-tags" name="input-tags" placeholder="#tags">
                         </div>
                         <div class="form-group">
                           <button class="btn btn-square btn-outline-info" type="submit">Post</button>&nbsp;&nbsp;
@@ -319,31 +319,31 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
                   </div>
                 </div>
 
-                  <div id="link-post">
-                    <div class="row">
-                      <div class="col-lg-8 offset-lg-2">
-                        <h3>Create A New Post</h3>
-                        <form action="newpost.php" class="post-form">
-                          <input type="hidden" value="postlink" name="type" id="type">
-                          <div class="form-group">
-                            <input class="form-control form-control-lg" type="text" placeholder="Link" name="link" id="link" required>
-                          </div>
-                          <div class="form-group">
-                            <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
-                          </div>
-                          <div class="form-group">
-                            <!-- <label class="form-label">Tags</label> -->
-                            <input type="text" class="form-control input-tag" id="input-tags" name="input-tags" placeholder="#tags">
-                          </div>
-                          <div class="form-group">
-                            <button class="btn btn-square btn-outline-info" type="submit">Post</button>&nbsp;&nbsp;
-                            <button class="btn btn-square btn-outline-secondary" type="button" onclick="closePost()">Close</button>
-                          </div>
-                        </form>
-                      </div>
+                <div id="link-post">
+                  <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                      <h3>Create A New Post</h3>
+                      <form action="newpost.php" class="post-form">
+                        <input type="hidden" value="postlink" name="type" id="type">
+                        <div class="form-group">
+                          <input class="form-control form-control-lg" type="text" placeholder="Title" name="title" id="title" required>
+                        </div>
+                        <div class="form-group">
+                          <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <!-- <label class="form-label">Tags</label> -->
+                          <input type="text" class="form-control input-tag" id="input-tags" name="input-tags" placeholder="#tags">
+                        </div>
+                        <div class="form-group">
+                          <button class="btn btn-square btn-outline-info" type="submit">Post</button>&nbsp;&nbsp;
+                          <button class="btn btn-square btn-outline-secondary" type="button" onclick="closePost()">Close</button>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </div>
+              </div>
 
                 <?php    
                foreach ($result as $res) {

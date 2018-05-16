@@ -71,35 +71,19 @@ function addPost($document, $email) {
   $post_details->insert($document);
   $userId = getUserId($email);
   $summary = (object)[
+    "type" => $document['type'],
     "title" => $document['title'],
     "date_posted" => $document['date_posted'],
     "tags" => $document['input-tags']
   ];
   $posts_array = array(
-    "post_details_id" => $post_details_id,
+    "post_details_id" => $document['_id'],
     "author" => $userId,
     "comments" => array(),
     "summary" => $summary
   );
   $posts->insert($posts_array);
 }
-function addImage($image){
-
-  global $post_details;
-
-  // $document = array(
-  //     "type" => "MCQ",
-      
-  //     "cover" => new MongoDB\BSON\Binary(file_get_contents($image["tmp_name"]), MongoDB\BSON\Binary::TYPE_GENERIC),
-  // );
-  // if ($post_details->insertOne($document)) {
-  //     return true;
-  //     echo "img uploaded!";
-  // }
-  $post_details->insert($image);
-  return true;
-}
-
 function followUser($currentUserEmail, $toFollowEmail) {
   global $users;
   global $user_followers;
