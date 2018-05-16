@@ -24,7 +24,7 @@ $userResult = $db->users->find([
 ])->sort(array('followers_count' => -1));
 
 $result = $db->postImages->find()->sort(array('_id' => -1)); // query for getting images
-    $result_details = $db->post_details->find()->sort(array($userId));
+ $result_details = $db->post_details->find()->sort(array($userId)); //query for post
 
 ?>
 
@@ -107,7 +107,7 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
                     <a class="dropdown-item" href="#">
                       <i class="dropdown-icon fe fe-help-circle"></i> Need help?
                     </a>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="logout_action.php">
                       <i class="dropdown-icon fe fe-log-out"></i> Sign out
                     </a>
                   </div>
@@ -216,13 +216,17 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
   
                     <li class='list-group-item py-5'>
                       <div class='media'>
-                        <div class='media-object avatar avatar-md mr-4' style='background-image: url(demo/faces/male/16.jpg)'></div>
+                        <span class='avatar avatar-placeholder mr-4'></span>
                         <div class='media-body'>
                           <div class='media-heading'>
-                            <small class='float-right text-muted'>12 min</small>
-                            <h5></h5>
+                            <small class='float-right text-muted'>".$r['date_posted']." </small>
+                            <h5>".$name." " .$sname. "</h5>
                           </div>
-                          <div>
+                           <div>
+                           <h4>
+                           ".$r['title']."
+                  
+                          </h4>
                            ".$r['content']."
                           </div>
                         </div>
