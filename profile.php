@@ -181,7 +181,7 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
                         </ul>
                     </p>
                     <button class="btn btn-outline-primary btn-sm">
-                      <span class="fa fa-twitter"></span> Follow
+                      <span class="fe fe-plus mr-2"></span> Follow
                     </button>
                   </div>
                 </div>
