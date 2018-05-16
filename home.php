@@ -186,7 +186,7 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
                   </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                  <a class="dropdown-item" href="profilepage.php">
+                  <a class="dropdown-item" href="profile.php">
                     <i class="dropdown-icon fe fe-user"></i> Profile
                   </a>
                   <a class="dropdown-item" href="#">
