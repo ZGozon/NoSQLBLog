@@ -79,7 +79,7 @@ $recommenBlogger = $db->users->find([
   <script>
     $(function () {
       $('textarea#froala-editor').froalaEditor({
-        placeholderText: 'upload photo',
+        placeholderText: 'upload and caption your photos ;)',
         toolbarButtons: ['insertImage'],
         pluginsEnabled: ['image']
       })
@@ -129,18 +129,10 @@ $recommenBlogger = $db->users->find([
     #commentBox {
       display: none;
     }
-
-    .options span {
-      margin-right: 2rem;
-    }
-
-    .options button {
-      margin-right: 1rem;
-    }
-
-    .options button:last-child {
-      margin-right: 0;
-    }
+    .options span { margin-right: 2rem }
+    .options button { margin-right: 1rem }
+    .options button:last-child { margin-right: 0 }
+    textarea { resize: none }
   </style>
 </head>
 
