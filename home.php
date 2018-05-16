@@ -18,8 +18,11 @@
     
 $result = $db->post_details->find()->sort(array('_id' => -1));
 
-$userResult = $db->users->find()->sort(array('_id' => -1));
+$userResult = $db->users->find([
+  'Email Address' => ['$ne' => $email]
+])->sort(array('followers_count' => -1));
 
+$result = $db->postImages->find()->sort(array('_id' => -1)); // query for getting images
 
 
 ?>
@@ -40,6 +43,44 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
   <meta name="MobileOptimized" content="320">
   <link rel="icon" href="./favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
+
+  <!--  photo post feature dont touch khelly's property -->
+  <!--  photo post feature dont touch khelly's property -->
+
+  <!-- Include external JS libs. -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
+
+  <!-- Include Editor JS files. -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.1/js/froala_editor.pkgd.min.js"></script>
+
+          <!-- Include external CSS. -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+
+  <!-- Include Editor style. -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+
+  <!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
+  <link href="../css/froala_style.min.css" rel="stylesheet" type="text/css" />
+
+
+  <script> $(function() { $('textarea#froala-editor').froalaEditor({
+      quickInsertButtons: ['image'],
+      pluginsEnabled: ['quickInsert', 'image'] 
+      }) 
+    }); 
+  </script>
+
+  <!-- photo post feature dont touch khelly's property -->
+  <!-- photo post feature dont touch khelly's property -->
+
+
+
+
+
   <!-- Generated: 2018-04-16 09:29:05 +0200 -->
   <title>Dashboard</title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css" integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/"
@@ -72,7 +113,15 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
     #commentBox {
       display: none;
     }
-
+    .options span {
+      margin-right: 2rem;
+    }
+    .options button {
+      margin-right: 1rem;
+    }
+    .options button:last-child {
+      margin-right: 0;
+    }
   </style>
 </head>
 
@@ -161,8 +210,6 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
         </div>
       </div>
 
-
-
       <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
         <div class="container">
           <div class="row align-items-center">
@@ -186,7 +233,6 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
         </div>
       </div>
 
-
       <div class="my-3 my-md-5">
         <div class="container">
           <!-- <div class="page-header">
@@ -199,7 +245,7 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
             <div class="col-lg-8 ">
               <div class="card">
                 <div class="row">
-                  <div class="col-md-6 offset-md-4">
+                  <div class="col-md-8 offset-md-2 text-center">
                     <br>
                     <div class="options">
                       <span class="avatar avatar-placeholder avatar-lg"></span>
@@ -221,7 +267,7 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                 </div>
                 <div id="text-post">
                   <div class="row">
-                    <div class="col-lg-6 offset-lg-4">
+                    <div class="col-lg-8 offset-lg-2">
                       <h3>Create A New Post</h3>
                       <form action="newpost.php" class="post-form">
                         <input type="hidden" value="text" name="type" id="type">
@@ -235,12 +281,12 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                                 <input class="form-control" type="text" placeholder="#tags" name="tags" id="tags" data-role="tagsinput">
                             </div> -->
                         <div class="form-group">
-                          <label class="form-label">Tags</label>
-                          <input type="text" class="form-control" id="input-tags" name="input-tags">
+                          <!-- <label class="form-label">Tags</label> -->
+                          <input type="text" class="form-control" id="input-tags" name="input-tags" placeholder="#tags">
                         </div>
                         <div class="form-group">
-                          <button class="btn btn-primary" type="submit">Post</button>&nbsp;&nbsp;
-                          <button class="btn" type="button" onclick="closePost()">Close</button>
+                          <button class="btn btn-square btn-outline-info" type="submit">Post</button>&nbsp;&nbsp;
+                          <button class="btn btn-square btn-outline-secondary" type="button" onclick="closePost()">Close</button>
                         </div>
                       </form>
                     </div>
@@ -249,41 +295,20 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
 
                 <div id="img-post">
                   <div class="row">
-                    <div class="col-lg-6 offset-lg-4">
-                      <h3>Create A New Post</h3>
-                      <form action="newpost.php" enctype="multipart/form-data" class="post-form">
-                        <input type="hidden" value="image" name="type" id="type">
-                        <!-- <div class="form-group">
-                                <label class="upload">
-                                    <input type="file" required accept="image/gif, image/jpeg, image/png" name="cover" id="cover">
-                                    <i class="ion-image"></i>
-                                    Upload
-                                </label>
-                            </div> -->
-                        <div class="custom-file">
-                          <input type="file" class="custom-file-input" required accept="image/gif, image/jpeg, image/png" name="cover" id="cover">
-                          <label class="custom-file-label">Choose file</label>
-                        </div>
-                        <br>
-                        <div class="form-group">
-                          <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
-                        </div>
-                        <div class="form-group">
-                          <label class="form-label">Tags</label>
-                          <input type="text" class="form-control input-tags" id="input-tags" name="input-tags">
-                        </div>
-                        <div class="form-group">
-                          <button class="btn btn-primary" type="submit">Post</button>&nbsp;&nbsp;
-                          <button class="btn" type="button" onclick="closePost()">Close</button>
-                        </div>
-                      </form>
-                    </div>
+                    <div class="col-lg-8 offset-lg-2">
+                      <h3>Create a Photo Post</h3>
+                        <form action="test/postProcess.php" method="POST"> 
+                          <!-- <div id="froala-editor"> -->
+                            <textarea id="froala-editor" name="postContent"></textarea>
+                          <!-- </div> -->
+                          <button type="submit">submit</button>
+                        </form>
                   </div>
                 </div>
 
                 <div id="link-post">
                   <div class="row">
-                    <div class="col-lg-6 offset-lg-4">
+                    <div class="col-lg-8 offset-lg-2">
                       <h3>Create A New Post</h3>
                       <form action="newpost.php" class="post-form">
                         <input type="hidden" value="postlink" name="type" id="type">
@@ -294,12 +319,12 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                           <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
                         </div>
                         <div class="form-group">
-                          <label class="form-label">Tags</label>
-                          <input type="text" class="form-control input-tag" id="input-tags" name="input-tags">
+                          <!-- <label class="form-label">Tags</label> -->
+                          <input type="text" class="form-control input-tag" id="input-tags" name="input-tags" placeholder="#tags">
                         </div>
                         <div class="form-group">
-                          <button class="btn btn-primary" type="submit">Post</button>&nbsp;&nbsp;
-                          <button class="btn" type="button" onclick="closePost()">Close</button>
+                          <button class="btn btn-square btn-outline-info" type="submit">Post</button>&nbsp;&nbsp;
+                          <button class="btn btn-square btn-outline-secondary" type="button" onclick="closePost()">Close</button>
                         </div>
                       </form>
                     </div>
@@ -307,10 +332,32 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                 </div>
               </div>
 
+              <?php     
+              foreach ($result as $res) {
+                echo "
+                <div class='pt-4 pb-4'>
+                  <div class='card'>
+                    <div class='card-body'>
+                      <div class='row'>
+                        <div class='col-md-2'><img src='https://bootdey.com/img/Content/avatar/avatar6.png' class='img-fluid rounded-circle'></div>
+                        <div class='col-md-10'>
+                          <h5 class='card-title'>Card title</h5>
+                          <h6 class='card-subtitle mb-2 text-muted'>Card subtitle</h6>
+                          <p class='card-text'>".$res['content']."</p>
+                          <a href='#' class='card-link'>Card link</a>
+                          <a href='#' class='card-link'>Another link</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                ";
+              }
+              ?>
+
 
               <?php     
               foreach ($result as $res) {
-
                 echo"
                 <div class='card card-aside'>
                   <div class='card-body d-flex flex-column'>
@@ -328,35 +375,29 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                           echo "
                       </div>
                       <div class='ml-auto text-red'>
-                        <a id=\"comment_button\" class='icon d-none d-md-inline-block ml-3'><i class='fe fe-message-circle mr-1'></i></a>
+                        <a id='comment_button' class='icon d-none d-md-inline-block ml-3'><i class='fe fe-message-circle mr-1'></i></a>
                       </div>
                     </div>
                     </br>
-
-                      <div id=\"commentBox\">
-                      <ul class=\"media-list\">
-                            <li class=\"media mt-4\">
-                              <div class=\"media-object avatar mr-4\" style=\"background-image: url(demo/faces/female/17.jpg)\"></div>
-                              <div class=\"media-body\">
-                                <strong>Debra Beck: </strong>
-                                  <div class=\"form-group\">
-                          <input class=\"form-control form-control-lg\" type=\"text\" placeholder=\"Enter your comment\" name=\"comment\" id=\"comment\">
-                        </div>
+                    <div id='commentBox'>
+                      <ul class='media-list'>
+                        <li class='media mt-4'>
+                          <div class='media-object avatar mr-4' style='background-image: url(demo/faces/female/17.jpg)'></div>
+                          <div class='media-body'>
+                            <strong>Debra Beck: </strong>
+                              <div class='form-group'>
+                                <input class='form-control form-control-lg' type='text' placeholder='Enter your comment' name='comment' id='comment'>
                               </div>
-                            </li>
-
-                          </ul>
                           </div>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-
                 </div>";
-
               }
               ?>
-
-
             </div>
-
+          </div>
 
 
             <!-- 2nd column -->
@@ -384,9 +425,7 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
                   </table>
                 </div>
               </div>
-
             </div>
-
           </div>
         </div>
       </div>
@@ -440,7 +479,6 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
@@ -448,7 +486,6 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
       <div class="container">
         <div class="row align-items-center flex-row-reverse">
           <div class="col-auto ml-lg-auto">
-
             <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
               Copyright © 2018 All rights reserved.
             </div>
@@ -470,8 +507,6 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
               }
             }
           });
-
-
         });
 
         $(document).ready(function () {
@@ -485,8 +520,6 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
               }
             }
           });
-
-
         });
 
         $(document).ready(function () {
@@ -500,16 +533,13 @@ $userResult = $db->users->find()->sort(array('_id' => -1));
               }
             }
           });
-
         });
 
         $('#comment_button').click(function(){
-   $('#commentBox').toggle() 
-});
+          $('#commentBox').toggle() 
+        });
       });
     </script>
-
- 
 
 </body>
 
