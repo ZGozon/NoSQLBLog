@@ -159,7 +159,7 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
                           <ul class="social-links list-inline mb-0 mt-2">
                           <li class="list-inline-item">
                               <h4>
-                    <?php echo($posts->count()+1);;?>
+                    <?php echo($posts->count());;?>
                     <br>
                     <small>Posts</small>
                           </h4>

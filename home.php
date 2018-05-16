@@ -78,13 +78,17 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
         toolbarButtons: ['insertImage'],
         pluginsEnabled: ['image']
       })
+      
+      $('textarea#editorText').froalaEditor({
+        placeholderText: 'say something :)',
+        quickInsertButtons: ['table', 'ol', 'ul', 'myButton'],
+        pluginsEnabled: ['quickInsert', 'table', 'lists']
+      })
     });
   </script>
 
   <!-- photo post feature dont touch khelly's property -->
   <!-- photo post feature dont touch khelly's property -->
-
-
 
 
 
@@ -282,11 +286,7 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
                       <form action="newpost.php" class="post-form">
                         <input type="hidden" value="text" name="type" id="type">
                         <div class="form-group">
-                          <input class="form-control form-control-lg" type="text" placeholder="Title" name="title" id="title">
-                        </div>
-                        <div class="form-group">
-                          <textarea class="form-control" rows="4" name="content" id="content" placeholder="Your text here" required></textarea>
-                        </div>
+                          <textarea id="editorText" rows="4" name="content" required></textarea>                        </div>
                         <div class="form-group">
                           <input type="text" class="form-control" id="input-tags" name="input-tags" placeholder="#tags">
                         </div>
@@ -351,15 +351,11 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
                 echo"
                 <div class='card card-aside'>
                   <div class='card-body d-flex flex-column'>
-                      
                     <div class='text-muted'>".$res['content']."</div>
                     <div class='d-flex align-items-center pt-5 mt-auto'>
                       <div class='avatar avatar-placeholder avatar-purple mr-3'></div>
                       <div>
-                        <a href='./profile.html' class='text-default'>".$name.' '.$sname."</a>";
-                        echo"<br>";
-                       
-                          echo "
+                        <a href='./profile.html' class='text-default'>".$name.' '.$sname."</a>
                       </div>
                       <div class='ml-auto text-red'>
                         <a id='comment_button' class='icon d-none d-md-inline-block ml-3'><i class='fe fe-message-circle mr-1'></i></a>
@@ -383,11 +379,8 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
                 </div>";
               }
               ?>
-
-
-
-
-              <?php     
+              
+              <?php    
               foreach ($result_details as $res) {
                 echo"
                 <div class='card card-aside'>
@@ -400,7 +393,6 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
                         <a href='./profile.html' class='text-default'>".$name.' '.$sname."</a>";
                         echo"<br>";
                         foreach ($res['input-tags'] as $tags) {
-
                           echo"&nbsp;<span class='tag'>".$tags."  </span>";
                           } 
                           echo "
