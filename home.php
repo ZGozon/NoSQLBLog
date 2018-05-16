@@ -1,7 +1,7 @@
 <?php    
     require_once 'library.php';
     require_once 'connection.php';
-    require_once 'searchLib.php';
+    // require_once 'searchLib.php';
 
     $name = $_SESSION["uname"];
     $sname = $_SESSION["sname"];
@@ -17,14 +17,14 @@
         }
     }
     
-$result = $db->post_details->find()->sort(array('_id' => -1));
+$result = $db->post_details->find()->sort(array('date_posted' => -1));
 
 $userResult = $db->users->find([
   'Email Address' => ['$ne' => $email]
 ])->sort(array('followers_count' => -1));
 
-$result = $db->postImages->find()->sort(array('_id' => -1)); // query for getting images
-$result_details = $db->post_details->find()->sort(array($userId)); //query for post
+// $result = $db->postImages->find()->sort(array('_id' => -1)); // query for getting images
+$result_details = $db->post_details->find()->sort(array('date_posted' => -1)); //query for post
 
 ?>
 <!doctype html>
@@ -145,37 +145,6 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
               <img src="images/logo.gif" class="header-brand-img" alt="tabler logo">
             </a>
             <div class="d-flex order-lg-2 ml-auto">
-              <!--  <div class="dropdown d-none d-md-flex">
-                  <a class="nav-link icon" data-toggle="dropdown">
-                    <i class="fe fe-bell"></i>
-                    <span class="nav-unread"></span>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                    <a href="#" class="dropdown-item d-flex">
-                      <span class="avatar mr-3 align-self-center" style="background-image: url(demo/faces/male/41.jpg)"></span>
-                      <div>
-                        <strong>Nathan</strong> pushed new commit: Fix page load performance issue.
-                        <div class="small text-muted">10 minutes ago</div>
-                      </div>
-                    </a>
-                    <a href="#" class="dropdown-item d-flex">
-                      <span class="avatar mr-3 align-self-center" style="background-image: url(demo/faces/female/1.jpg)"></span>
-                      <div>
-                        <strong>Alice</strong> started new task: Tabler UI design.
-                        <div class="small text-muted">1 hour ago</div>
-                      </div>
-                    </a>
-                    <a href="#" class="dropdown-item d-flex">
-                      <span class="avatar mr-3 align-self-center" style="background-image: url(demo/faces/female/18.jpg)"></span>
-                      <div>
-                        <strong>Rose</strong> deployed new version of NodeJS REST Api V3
-                        <div class="small text-muted">2 hours ago</div>
-                      </div>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item text-center text-muted-dark">Mark all as read</a>
-                  </div>
-                </div> -->
               <div class="dropdown">
                 <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
                   <span class="avatar avatar-placeholder "></span>
@@ -223,14 +192,14 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
       <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
         <div class="container">
           <div class="row align-items-center">
-            <div class="col-lg-3 ml-auto">
+            <!-- <div class="col-lg-3 ml-auto">
               <form class="input-icon my-3 my-lg-0">
                 <input type="search" class="form-control header-search" placeholder="Search&hellip;" tabindex="1">
                 <div class="input-icon-addon">
                   <i class="fe fe-search"></i>
                 </div>
               </form>
-            </div>
+            </div> -->
             <div class="col-lg order-lg-first">
               <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                 <li class="nav-item">
