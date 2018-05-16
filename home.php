@@ -71,16 +71,14 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
   <link href="../css/froala_style.min.css" rel="stylesheet" type="text/css" />
 
 
-<script>
+  <script>
     $(function () {
       $('textarea#froala-editor').froalaEditor({
-        placeholderText: 'upload photo',
-        toolbarButtons: ['insertImage'],
-        pluginsEnabled: ['image']
+        quickInsertButtons: ['image'],
+        pluginsEnabled: ['quickInsert', 'image']
       })
     });
   </script>
-
 
   <!-- photo post feature dont touch khelly's property -->
   <!-- photo post feature dont touch khelly's property -->
@@ -286,7 +284,7 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
                           <input class="form-control form-control-lg" type="text" placeholder="Title" name="title" id="title">
                         </div>
                         <div class="form-group">
-                          <textarea class="form-control" rows="4" name="content" id="content" placeholder="Your text here" required></textarea>
+                          <textarea id="froala-editor" rows="4" name="content" required></textarea>
                         </div>
                         <div class="form-group">
                           <input type="text" class="form-control" id="input-tags" name="input-tags" placeholder="#tags">
@@ -347,7 +345,7 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
                 </div>
               </div>
 
-              <?php    
+                <?php    
                foreach ($result as $res) {
                 echo"
                 <div class='card card-aside'>
@@ -384,11 +382,11 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
                 </div>";
               }
               ?>
+              
 
 
 
-
-              <?php     
+                <?php     
               foreach ($result_details as $res) {
                 echo"
                 <div class='card card-aside'>
@@ -428,20 +426,19 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
                 </div>";
               }
               ?>
-            </div>
-          </div>
-
-
-          <!-- 2nd column -->
-          <div class="col-lg-4">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Recommended Bloggers</h3>
               </div>
-              <div class="table-responsive">
-                <table class="table card-table table-striped table-vcenter">
-                  <tbody>
-                    <?php 
+
+
+            <!-- 2nd column -->
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Recommended Bloggers</h3>
+                </div>
+                <div class="table-responsive">
+                  <table class="table card-table table-striped table-vcenter">
+                    <tbody>
+                      <?php 
                         foreach ($userResult as $user ) {
                           echo"
                             <tr>
@@ -453,125 +450,125 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
                           ";
                         }
                       ?>
-                  </tbody>
-                </table>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
 
-  <div class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8">
-          <div class="row">
-            <div class="col-6 col-md-3">
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <a href="#">First link</a>
-                </li>
-                <li>
-                  <a href="#">Second link</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-6 col-md-3">
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <a href="#">Third link</a>
-                </li>
-                <li>
-                  <a href="#">Fourth link</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-6 col-md-3">
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <a href="#">Fifth link</a>
-                </li>
-                <li>
-                  <a href="#">Sixth link</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-6 col-md-3">
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <a href="#">Other link</a>
-                </li>
-                <li>
-                  <a href="#">Last link</a>
-                </li>
-              </ul>
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-6 col-md-3">
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="#">First link</a>
+                  </li>
+                  <li>
+                    <a href="#">Second link</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-6 col-md-3">
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="#">Third link</a>
+                  </li>
+                  <li>
+                    <a href="#">Fourth link</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-6 col-md-3">
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="#">Fifth link</a>
+                  </li>
+                  <li>
+                    <a href="#">Sixth link</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-6 col-md-3">
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="#">Other link</a>
+                  </li>
+                  <li>
+                    <a href="#">Last link</a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <footer class="footer">
-    <div class="container">
-      <div class="row align-items-center flex-row-reverse">
-        <div class="col-auto ml-lg-auto">
-          <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
-            Copyright © 2018 All rights reserved.
+    <footer class="footer">
+      <div class="container">
+        <div class="row align-items-center flex-row-reverse">
+          <div class="col-auto ml-lg-auto">
+            <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
+              Copyright © 2018 All rights reserved.
+            </div>
           </div>
         </div>
-      </div>
-  </footer>
-  </div>
+    </footer>
+    </div>
 
-  <script>
-    require(['jquery', 'selectize'], function ($, selectize) {
-      $(document).ready(function () {
-        $('#input-tags').selectize({
-          delimiter: ',',
-          persist: false,
-          create: function (input) {
-            return {
-              value: input,
-              text: input
+    <script>
+      require(['jquery', 'selectize'], function ($, selectize) {
+        $(document).ready(function () {
+          $('#input-tags').selectize({
+            delimiter: ',',
+            persist: false,
+            create: function (input) {
+              return {
+                value: input,
+                text: input
+              }
             }
-          }
+          });
+        });
+
+        $(document).ready(function () {
+          $('.input-tags').selectize({
+            delimiter: ',',
+            persist: false,
+            create: function (input) {
+              return {
+                value: input,
+                text: input
+              }
+            }
+          });
+        });
+
+        $(document).ready(function () {
+          $('.input-tag').selectize({
+            delimiter: ',',
+            persist: false,
+            create: function (input) {
+              return {
+                value: input,
+                text: input
+              }
+            }
+          });
+        });
+
+        $('#comment_button').click(function () {
+          $('#commentBox').toggle()
         });
       });
-
-      $(document).ready(function () {
-        $('.input-tags').selectize({
-          delimiter: ',',
-          persist: false,
-          create: function (input) {
-            return {
-              value: input,
-              text: input
-            }
-          }
-        });
-      });
-
-      $(document).ready(function () {
-        $('.input-tag').selectize({
-          delimiter: ',',
-          persist: false,
-          create: function (input) {
-            return {
-              value: input,
-              text: input
-            }
-          }
-        });
-      });
-
-      $('#comment_button').click(function () {
-        $('#commentBox').toggle()
-      });
-    });
-  </script>
+    </script>
 
 </body>
 
