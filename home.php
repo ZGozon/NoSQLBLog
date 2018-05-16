@@ -101,7 +101,8 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
   <link href="./assets/css/dashboard.css" rel="stylesheet" />
   <script src="./assets/js/dashboard.js"></script>
   <!-- c3.js Charts Plugin -->
-
+  <link href="./assets/plugins/charts-c3/plugin.css" rel="stylesheet" />
+  <script src="./assets/plugins/charts-c3/plugin.js"></script>
   <!-- Google Maps Plugin -->
   <link href="./assets/plugins/maps-google/plugin.css" rel="stylesheet" />
   <script src="./assets/plugins/maps-google/plugin.js"></script>
