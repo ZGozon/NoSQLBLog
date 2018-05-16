@@ -91,21 +91,21 @@
               <p class="bio">Lived all my life on the top of mount Fuji, learning the way to be a Ninja Dev.</p>
               <ul class="nav nav-pills pull-left countlist" role="tablist">
                 <li role="presentation">
-                  <h3>1452
+                  <h3><?php echo($posts->count());;?>
                     <br>
-                    <small>Follower</small>
+                    <small>Posts</small>
                   </h3>
                 </li>
                 <li role="presentation">
-                  <h3>245
+                  <h3><?php echo($user_followers->count());;?>
                     <br>
-                    <small>Following</small>
+                    <small>Followers</small>
                   </h3>
                 </li>
                 <li role="presentation">
-                  <h3>5000
+                  <h3><?php echo($user_following->count());;?>
                     <br>
-                    <small>Activity</small>
+                    <small>Followwing</small>
                   </h3>
                 </li>
               </ul>
