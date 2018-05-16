@@ -73,7 +73,7 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
           <div class="container">
             <div class="d-flex">
               <a class="header-brand" href="home.php">
-                 <img src="images/logo.gif" class="header-brand-img" alt="tabler logo">
+                <img src="./demo/brand/tabler.svg" class="header-brand-img" alt="tabler logo">
               </a>
               <div class="d-flex order-lg-2 ml-auto">
                 <div class="dropdown d-none d-md-flex">
@@ -218,14 +218,11 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
                       <div class='media'>
                         <span class='avatar avatar-placeholder mr-4'></span>
                         <div class='media-body'>
-                         <h4>".$name." " .$sname. "</h4>
-                       
                           <div class='media-heading'>
                             <small class='float-right text-muted'>".$r['date_posted']." </small>
-                          
+                            <h5>".$name." " .$sname. "</h5>
                           </div>
                            <div>
-
                            <h4>";
 
                            echo "<div> <h4>
@@ -241,29 +238,12 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
                           echo"&nbsp;<span class='tag mb-0 mt-3'>".$tags."  </span>";
                           } 
                           echo "
-
                           </div>
-                           <small class='nav nav-pills pull-left'>tags:&nbsp</small>
-                        ";
-                        foreach ($r['input-tags'] as $tags) {
-                        echo"
-                          <ul class='nav nav-pills pull-left'>
-                          <li>
-                            <a href='' title=''>
-                              <i class='glyphicon glyphicon-thumbs-up'></i>#".$tags." 
-                            </a> &nbsp
-                          </li>
-                        </ul>
-                        ";
-                        } 
-                        echo"
-                        <br>
-                       
-                        </small>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                 ";
+                    </li>
+                  </ul>
+                </div>";
 
                 }?>
 
