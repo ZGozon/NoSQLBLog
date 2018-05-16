@@ -397,6 +397,7 @@ $result = $db->postImages->find()->sort(array('_id' => -1)); // query for gettin
               }
               ?>
             </div>
+          </div>
 
 
             <!-- 2nd column -->
