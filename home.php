@@ -78,7 +78,7 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
         toolbarButtons: ['insertImage'],
         pluginsEnabled: ['image']
       })
-      
+
       $('textarea#editorText').froalaEditor({
         placeholderText: 'say something :)',
         quickInsertButtons: ['table', 'ol', 'ul', 'myButton'],
@@ -286,7 +286,11 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
                       <form action="newpost.php" class="post-form">
                         <input type="hidden" value="text" name="type" id="type">
                         <div class="form-group">
-                          <textarea id="editorText" rows="4" name="content" required></textarea>                        </div>
+                          <input class="form-control form-control-lg" type="text" placeholder="Title" name="title" id="title">
+                        </div>
+                        <div class="form-group">
+                          <textarea id="editorText" rows="4" name="content" required></textarea>
+                        </div>
                         <div class="form-group">
                           <input type="text" class="form-control" id="input-tags" name="input-tags" placeholder="#tags">
                         </div>
@@ -379,7 +383,7 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
                 </div>";
               }
               ?>
-              
+
               <?php    
               foreach ($result_details as $res) {
                 echo"
