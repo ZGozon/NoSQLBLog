@@ -1,7 +1,7 @@
 <?php    
     require_once 'library.php';
     require_once 'connection.php';
-    // require_once 'searchLib.php';
+    require_once 'searchLib.php';
 
     $name = $_SESSION["uname"];
     $sname = $_SESSION["sname"];
@@ -16,20 +16,15 @@
             echo "Error!";
         }
     }
-  $getPosts = $db->posts->find();
-  foreach ($getPosts as $posts) {
-    $result = $db->post_details->find()->sort(['date_posted' => -1]);
-  }
-  
+    
+$result = $db->post_details->find()->sort(array('_id' => -1));
 
-// $result = $db->post_details->find()->sort(array('date_posted' => -1));
-
-$recommenBlogger = $db->users->find([
+$userResult = $db->users->find([
   'Email Address' => ['$ne' => $email]
 ])->sort(array('followers_count' => -1));
 
-// $result = $db->postImages->find()->sort(array('_id' => -1)); // query for getting images
-// $result_details = $db->post_details->find()->sort(array('date_posted' => -1)); //query for post
+$result = $db->postImages->find()->sort(array('_id' => -1)); // query for getting images
+$result_details = $db->post_details->find()->sort(array($userId)); //query for post
 
 ?>
 <!doctype html>
@@ -79,21 +74,18 @@ $recommenBlogger = $db->users->find([
   <script>
     $(function () {
       $('textarea#froala-editor').froalaEditor({
-        placeholderText: 'upload and caption your photos ;)',
+
+        placeholderText: 'upload photo',
         toolbarButtons: ['insertImage'],
         pluginsEnabled: ['image']
-      })
-
-      $('textarea#editorText').froalaEditor({
-        placeholderText: 'say something :)',
-        quickInsertButtons: ['table', 'ol', 'ul', 'myButton'],
-        pluginsEnabled: ['quickInsert', 'table', 'lists']
       })
     });
   </script>
 
   <!-- photo post feature dont touch khelly's property -->
   <!-- photo post feature dont touch khelly's property -->
+
+
 
 
 
@@ -129,10 +121,18 @@ $recommenBlogger = $db->users->find([
     #commentBox {
       display: none;
     }
-    .options span { margin-right: 2rem }
-    .options button { margin-right: 1rem }
-    .options button:last-child { margin-right: 0 }
-    textarea { resize: none }
+
+    .options span {
+      margin-right: 2rem;
+    }
+
+    .options button {
+      margin-right: 1rem;
+    }
+
+    .options button:last-child {
+      margin-right: 0;
+    }
   </style>
 </head>
 
@@ -146,6 +146,37 @@ $recommenBlogger = $db->users->find([
               <img src="images/logo.gif" class="header-brand-img" alt="tabler logo">
             </a>
             <div class="d-flex order-lg-2 ml-auto">
+              <!--  <div class="dropdown d-none d-md-flex">
+                  <a class="nav-link icon" data-toggle="dropdown">
+                    <i class="fe fe-bell"></i>
+                    <span class="nav-unread"></span>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                    <a href="#" class="dropdown-item d-flex">
+                      <span class="avatar mr-3 align-self-center" style="background-image: url(demo/faces/male/41.jpg)"></span>
+                      <div>
+                        <strong>Nathan</strong> pushed new commit: Fix page load performance issue.
+                        <div class="small text-muted">10 minutes ago</div>
+                      </div>
+                    </a>
+                    <a href="#" class="dropdown-item d-flex">
+                      <span class="avatar mr-3 align-self-center" style="background-image: url(demo/faces/female/1.jpg)"></span>
+                      <div>
+                        <strong>Alice</strong> started new task: Tabler UI design.
+                        <div class="small text-muted">1 hour ago</div>
+                      </div>
+                    </a>
+                    <a href="#" class="dropdown-item d-flex">
+                      <span class="avatar mr-3 align-self-center" style="background-image: url(demo/faces/female/18.jpg)"></span>
+                      <div>
+                        <strong>Rose</strong> deployed new version of NodeJS REST Api V3
+                        <div class="small text-muted">2 hours ago</div>
+                      </div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item text-center text-muted-dark">Mark all as read</a>
+                  </div>
+                </div> -->
               <div class="dropdown">
                 <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
                   <span class="avatar avatar-placeholder "></span>
@@ -193,14 +224,14 @@ $recommenBlogger = $db->users->find([
       <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
         <div class="container">
           <div class="row align-items-center">
-            <!-- <div class="col-lg-3 ml-auto">
+            <div class="col-lg-3 ml-auto">
               <form class="input-icon my-3 my-lg-0">
                 <input type="search" class="form-control header-search" placeholder="Search&hellip;" tabindex="1">
                 <div class="input-icon-addon">
                   <i class="fe fe-search"></i>
                 </div>
               </form>
-            </div> -->
+            </div>
             <div class="col-lg order-lg-first">
               <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                 <li class="nav-item">
@@ -255,7 +286,7 @@ $recommenBlogger = $db->users->find([
                           <input class="form-control form-control-lg" type="text" placeholder="Title" name="title" id="title">
                         </div>
                         <div class="form-group">
-                          <textarea id="editorText" rows="4" name="content" required></textarea>
+                          <textarea id="froala-editor" rows="4" name="content" required></textarea>
                         </div>
                         <div class="form-group">
                           <input type="text" class="form-control" id="input-tags" name="input-tags" placeholder="#tags">
@@ -276,7 +307,8 @@ $recommenBlogger = $db->users->find([
                       <form action="newpost.php">
                         <input type="hidden" value="img" name="type" id="type">
                         <div class="form-group">
-                          <textarea id="froala-editor" name="content" required></textarea>
+                          <textarea id="froala-editor" name="content" required>
+                          </textarea>
                         </div>
                         <div class="form-group">
                           <input type="text" class="form-control input-tag" id="input-tags" name="input-tags" placeholder="#tags">
@@ -297,7 +329,7 @@ $recommenBlogger = $db->users->find([
                       <form action="newpost.php" class="post-form">
                         <input type="hidden" value="postlink" name="type" id="type">
                         <div class="form-group">
-                          <input class="form-control form-control-lg" type="text" placeholder="Link" name="link" id="link" required>
+                          <input class="form-control form-control-lg" type="text" placeholder="Title" name="title" id="title" required>
                         </div>
                         <div class="form-group">
                           <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
@@ -320,19 +352,57 @@ $recommenBlogger = $db->users->find([
                foreach ($result as $res) {
                 echo"
                 <div class='card card-aside'>
-                  <div class='card-body d-flex flex-column'>";
-                  if ($res['type'] === 'text') {
-                    echo "<h4><a href='#'>".$res['title']."</a></h4>";
-                  }
-                  echo
-                  "
+                  <div class='card-body d-flex flex-column'>
+                      
                     <div class='text-muted'>".$res['content']."</div>
                     <div class='d-flex align-items-center pt-5 mt-auto'>
                       <div class='avatar avatar-placeholder avatar-purple mr-3'></div>
                       <div>
-                        <a href='./profile.php' class='text-default'>".$name.' '.$sname."</a>";
+                        <a href='./profile.html' class='text-default'>".$name.' '.$sname."</a>";
+                        echo"<br>";
+                       
+                          echo "
+                      </div>
+                      <div class='ml-auto text-red'>
+                        <a id='comment_button' class='icon d-none d-md-inline-block ml-3'><i class='fe fe-message-circle mr-1'></i></a>
+                      </div>
+                    </div>
+                    </br>
+                    <div id='commentBox'>
+                      <ul class='media-list'>
+                        <li class='media mt-4'>
+                          <div class='media-object avatar mr-4' style='background-image: url(demo/faces/female/17.jpg)'></div>
+                          <div class='media-body'>
+                            <strong>Debra Beck: </strong>
+                              <div class='form-group'>
+                                <input class='form-control form-control-lg' type='text' placeholder='Enter your comment' name='comment' id='comment'>
+                              </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>";
+              }
+              ?>
+
+
+
+
+              <?php     
+              foreach ($result_details as $res) {
+                echo"
+                <div class='card card-aside'>
+                  <div class='card-body d-flex flex-column'>
+                      <h4><a href='#'>".$res['title']."</a></h4>
+                    <div class='text-muted'>".$res['content']."</div>
+                    <div class='d-flex align-items-center pt-5 mt-auto'>
+                      <div class='avatar avatar-placeholder avatar-purple mr-3'></div>
+                      <div>
+                        <a href='./profile.html' class='text-default'>".$name.' '.$sname."</a>";
                         echo"<br>";
                         foreach ($res['input-tags'] as $tags) {
+
                           echo"&nbsp;<span class='tag'>".$tags."  </span>";
                           } 
                           echo "
@@ -360,19 +430,20 @@ $recommenBlogger = $db->users->find([
               }
               ?>
             </div>
+          </div>
 
 
-            <!-- 2nd column -->
-            <div class="col-lg-4">
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">Recommended Bloggers</h3>
-                </div>
-                <div class="table-responsive">
-                  <table class="table card-table table-striped table-vcenter">
-                    <tbody>
-                      <?php 
-                        foreach ($recommenBlogger as $user ) {
+          <!-- 2nd column -->
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Recommended Bloggers</h3>
+              </div>
+              <div class="table-responsive">
+                <table class="table card-table table-striped table-vcenter">
+                  <tbody>
+                    <?php 
+                        foreach ($userResult as $user ) {
                           echo"
                             <tr>
                               <td class='w-1'><span class='avatar' style='background-image: url(./demo/faces/male/9.jpg)'></span></td>
@@ -383,125 +454,125 @@ $recommenBlogger = $db->users->find([
                           ";
                         }
                       ?>
-                    </tbody>
-                  </table>
-                </div>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
 
-    <div class="footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8">
-            <div class="row">
-              <div class="col-6 col-md-3">
-                <ul class="list-unstyled mb-0">
-                  <li>
-                    <a href="#">First link</a>
-                  </li>
-                  <li>
-                    <a href="#">Second link</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-6 col-md-3">
-                <ul class="list-unstyled mb-0">
-                  <li>
-                    <a href="#">Third link</a>
-                  </li>
-                  <li>
-                    <a href="#">Fourth link</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-6 col-md-3">
-                <ul class="list-unstyled mb-0">
-                  <li>
-                    <a href="#">Fifth link</a>
-                  </li>
-                  <li>
-                    <a href="#">Sixth link</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-6 col-md-3">
-                <ul class="list-unstyled mb-0">
-                  <li>
-                    <a href="#">Other link</a>
-                  </li>
-                  <li>
-                    <a href="#">Last link</a>
-                  </li>
-                </ul>
-              </div>
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="row">
+            <div class="col-6 col-md-3">
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a href="#">First link</a>
+                </li>
+                <li>
+                  <a href="#">Second link</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-6 col-md-3">
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a href="#">Third link</a>
+                </li>
+                <li>
+                  <a href="#">Fourth link</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-6 col-md-3">
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a href="#">Fifth link</a>
+                </li>
+                <li>
+                  <a href="#">Sixth link</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-6 col-md-3">
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a href="#">Other link</a>
+                </li>
+                <li>
+                  <a href="#">Last link</a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <footer class="footer">
-      <div class="container">
-        <div class="row align-items-center flex-row-reverse">
-          <div class="col-auto ml-lg-auto">
-            <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
-              Copyright © 2018 All rights reserved.
-            </div>
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="row align-items-center flex-row-reverse">
+        <div class="col-auto ml-lg-auto">
+          <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
+            Copyright © 2018 All rights reserved.
           </div>
         </div>
-    </footer>
-    </div>
+      </div>
+  </footer>
+  </div>
 
-    <script>
-      require(['jquery', 'selectize'], function ($, selectize) {
-        $(document).ready(function () {
-          $('#input-tags').selectize({
-            delimiter: ',',
-            persist: false,
-            create: function (input) {
-              return {
-                value: input,
-                text: input
-              }
+  <script>
+    require(['jquery', 'selectize'], function ($, selectize) {
+      $(document).ready(function () {
+        $('#input-tags').selectize({
+          delimiter: ',',
+          persist: false,
+          create: function (input) {
+            return {
+              value: input,
+              text: input
             }
-          });
-        });
-
-        $(document).ready(function () {
-          $('.input-tags').selectize({
-            delimiter: ',',
-            persist: false,
-            create: function (input) {
-              return {
-                value: input,
-                text: input
-              }
-            }
-          });
-        });
-
-        $(document).ready(function () {
-          $('.input-tag').selectize({
-            delimiter: ',',
-            persist: false,
-            create: function (input) {
-              return {
-                value: input,
-                text: input
-              }
-            }
-          });
-        });
-
-        $('#comment_button').click(function () {
-          $('#commentBox').toggle()
+          }
         });
       });
-    </script>
+
+      $(document).ready(function () {
+        $('.input-tags').selectize({
+          delimiter: ',',
+          persist: false,
+          create: function (input) {
+            return {
+              value: input,
+              text: input
+            }
+          }
+        });
+      });
+
+      $(document).ready(function () {
+        $('.input-tag').selectize({
+          delimiter: ',',
+          persist: false,
+          create: function (input) {
+            return {
+              value: input,
+              text: input
+            }
+          }
+        });
+      });
+
+      $('#comment_button').click(function () {
+        $('#commentBox').toggle()
+      });
+    });
+  </script>
 
 </body>
 

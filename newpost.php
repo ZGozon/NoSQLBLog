@@ -32,9 +32,9 @@
         );
           addPost($arrays, $email);
           echo ("<script LANGUAGE='JavaScript'>
-    window.alert('Succesfully posted!');
-    window.location.href='home.php';
-    </script>");
+          window.alert('Succesfully posted!');
+          window.location.href='home.php';
+          </script>");
           break;
       case "postlink":
         $link = $_GET['link'];
@@ -47,67 +47,30 @@
           "comments_count" => $comments_count
         );
           addPost($arrays, $email);
+          echo ("<script LANGUAGE='JavaScript'>
+          window.alert('Succesfully posted!');
+          window.location.href='home.php';
+          </script>");
           break;
-      case "image":
-        // $test1 = $_GET['cover'];
-        // $image = $_FILES['image'] = $test1 ;
-        // addImage($image);
+      case "img":
+        $arrays = array(
+          "type" => $type,
+          "content" => $content,
+          "input-tags" => $tags,
+          "date_posted" => $date,
+          "comments_count" => $comments_count
+        );
+          addPost($arrays, $email);
+          echo ("<script LANGUAGE='JavaScript'>
+          window.alert('Succesfully posted!');
+          window.location.href='home.php';
+          </script>");
           break;
       default:
-          echo "post failed try again!";
+        echo ("<script LANGUAGE='JavaScript'>
+        window.alert('Post failed! Try again.');
+        window.location.href='home.php';
+        </script>");
     }
   }
-  // if(isset($_REQUEST['type']) &&  !empty($_REQUEST['type'])) {
-  //   $type = $_GET['type'];
-  //   echo $type;
-  //   $type = $_GET['type'];
-  //   $content = $_GET['content'];
-  //   $tags = $_GET['tags'];
-  //   if($type === 'text') {
-  //     $title = $_GET['title'];
-  //     $arrays = array(
-  //       "type" => $type,
-  //       "title" => $title,
-  //       "content" => $content,
-  //       "tags" => $tags
-  //     );
-  //     print_r($arrays);
-  //   } else if($type === 'img') {
-  //     $imgdata = $_GET['imgdata'];
-  //     $arrays = array(
-  //       "type" => $type,
-  //       "imgdata" => $imgdata,
-  //       "caption" => $content,
-  //       "tags" => $tags
-  //     );
-  //   }
-  //   // } else {
-  //   //   $link = $_GET['link'];
-  //   //   echo 'this is link post';
-  //   //   $arrays = array(
-  //   //     "type" => $type,
-  //   //     "link" => $link,
-  //   //     "caption" => $content,
-  //   //     "tags" => $tags
-  //   //   );
-  //   elseif ($type === 'link') {
-  //     $link = $_GET['link'];
-  //     echo 'this is link post';
-  //     $arrays = array(
-  //       "type" => $type,
-  //       "link" => $link,
-  //       "caption" => $content,
-  //       "tags" => $tags );
-  //   } else {
-  //     echo error_log;
-  //   }
-  //     // $test = "testingWorkpls";
-  //     addTEST($arrays);
-  //           //   $test = "testingWorkpls";
-  //           // addPost($test);
-  // }
-
-
-
-  
 ?>
