@@ -30,16 +30,18 @@
     <link rel="stylesheet" type="text/css" href="css/login_main.css">
     <link rel="stylesheet" type="text/css" href="css/login_util.css">
 <!--===============================================================================================-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet prefetch' href='https://cdn.rawgit.com/michalsnik/aos/2.0.4/dist/aos.css'>
     <title>Log-In</title>
 </head>
 <body>
     
     <div class="limiter">
-        <div class="container-login100">
-            <div class="wrap-login100">
-                <form class="login100-form validate-form" method="post" action="login_action.php">
+        <div class="container-login100" >
+            <div class="wrap-login100" data-aos="fade-up">
+                <form class="login100-form validate-form" method="post" action="login_action.php" >
                     <span class="login100-form-title p-b-26">
-                        Welcome
+                        Log in to Baso
                     </span>
 
                     <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
@@ -93,6 +95,14 @@
     <script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
     <script src="js/login.js"></script>
+    <script src="js/index.js"></script>
+    <script src='https://cdn.rawgit.com/michalsnik/aos/2.0.4/dist/aos.js'></script>
+
+<script>
+  AOS.init({
+    easing: 'ease-in-out-sine'
+  });
+</script>
 
 </body>
 </html>

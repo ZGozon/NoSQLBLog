@@ -87,7 +87,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="container-login100" style="background-color: transparent;">
+                <div class="container-login100" style="background-color: transparent;" data-aos="slide-left">
                     <div class="wrap-login100">
                         <form action="register_action.php" method="post">
                             <span class="login100-form-title p-b-49">
@@ -131,6 +131,7 @@
 
 
                         <center>
+                        <br>
                         <span class="txt1">
                             Already Member?
                         </span>
