@@ -31,6 +31,8 @@
     <link rel="stylesheet" type="text/css" href="css/login_main.css">
     <link rel="stylesheet" type="text/css" href="css/login_util.css">
     <!--===============================================================================================-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet prefetch' href='https://cdn.rawgit.com/michalsnik/aos/2.0.4/dist/aos.css'>
     <title>Blog Page</title>
     <style>
         @keyframes infiniteScrollBg {
@@ -53,7 +55,7 @@
         .animated-scene__frame {
             width: 100%;
             height: 100%;
-            background-color: #4277a3;
+            background-color: #4277a3 ;
             background-image: url('images/portraitsCopy.png');
         }
     </style>
@@ -76,16 +78,16 @@
                 <div class="container h-100">
                     <div class="row h-100 justify-content-center align-items-center">
                         <span class="login100-form-title p-b-49" style="color: white;">
-                            <h4 class="display-4">Welcome to BASO</h4>
+                            <h4 class="display-4" data-aos="fade-up">Welcome to BASO</h4>
                             <br>
-                            <h4> The No.1 Blogging Website</h4>
+                            <h4 data-aos="fade-up"> The No.1 Blogging Website</h4>
                         </span>
                         <br>
                     </div>
                 </div>
             </div>
             <div class="col">
-                <div class="container-login100" style="background-color: transparent;">
+                <div class="container-login100" style="background-color: transparent;" data-aos="slide-left">
                     <div class="wrap-login100">
                         <form action="register_action.php" method="post">
                             <span class="login100-form-title p-b-49">
@@ -129,6 +131,7 @@
 
 
                         <center>
+                        <br>
                         <span class="txt1">
                             Already Member?
                         </span>
@@ -155,6 +158,14 @@
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <!--===============================================================================================-->
     <script src="js/main.js"></script>
+    <script src='https://cdn.rawgit.com/michalsnik/aos/2.0.4/dist/aos.js'></script>
+
+<script src="js/index.js"></script>
+<script>
+  AOS.init({
+    easing: 'ease-in-out-sine'
+  });
+</script>
 
 </body>
 

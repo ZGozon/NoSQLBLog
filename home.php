@@ -1,7 +1,7 @@
 <?php    
     require_once 'library.php';
     require_once 'connection.php';
-    require_once 'searchLib.php';
+    // require_once 'searchLib.php';
 
     $name = $_SESSION["uname"];
     $sname = $_SESSION["sname"];
@@ -16,15 +16,20 @@
             echo "Error!";
         }
     }
-    
-$result = $db->post_details->find()->sort(array('_id' => -1));
+  $getPosts = $db->posts->find();
+  foreach ($getPosts as $posts) {
+    $result = $db->post_details->find()->sort(['date_posted' => -1]);
+  }
+  
 
-$userResult = $db->users->find([
+// $result = $db->post_details->find()->sort(array('date_posted' => -1));
+
+$recommenBlogger = $db->users->find([
   'Email Address' => ['$ne' => $email]
 ])->sort(array('followers_count' => -1));
 
-$result = $db->postImages->find()->sort(array('_id' => -1)); // query for getting images
-$result_details = $db->post_details->find()->sort(array($userId)); //query for post
+// $result = $db->postImages->find()->sort(array('_id' => -1)); // query for getting images
+// $result_details = $db->post_details->find()->sort(array('date_posted' => -1)); //query for post
 
 ?>
 <!doctype html>
@@ -74,7 +79,7 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
   <script>
     $(function () {
       $('textarea#froala-editor').froalaEditor({
-        placeholderText: 'upload photo',
+        placeholderText: 'upload and caption your photos ;)',
         toolbarButtons: ['insertImage'],
         pluginsEnabled: ['image']
       })
@@ -124,18 +129,10 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
     #commentBox {
       display: none;
     }
-
-    .options span {
-      margin-right: 2rem;
-    }
-
-    .options button {
-      margin-right: 1rem;
-    }
-
-    .options button:last-child {
-      margin-right: 0;
-    }
+    .options span { margin-right: 2rem }
+    .options button { margin-right: 1rem }
+    .options button:last-child { margin-right: 0 }
+    textarea { resize: none }
   </style>
 </head>
 
@@ -149,37 +146,6 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
               <img src="images/logo.gif" class="header-brand-img" alt="tabler logo">
             </a>
             <div class="d-flex order-lg-2 ml-auto">
-              <!--  <div class="dropdown d-none d-md-flex">
-                  <a class="nav-link icon" data-toggle="dropdown">
-                    <i class="fe fe-bell"></i>
-                    <span class="nav-unread"></span>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                    <a href="#" class="dropdown-item d-flex">
-                      <span class="avatar mr-3 align-self-center" style="background-image: url(demo/faces/male/41.jpg)"></span>
-                      <div>
-                        <strong>Nathan</strong> pushed new commit: Fix page load performance issue.
-                        <div class="small text-muted">10 minutes ago</div>
-                      </div>
-                    </a>
-                    <a href="#" class="dropdown-item d-flex">
-                      <span class="avatar mr-3 align-self-center" style="background-image: url(demo/faces/female/1.jpg)"></span>
-                      <div>
-                        <strong>Alice</strong> started new task: Tabler UI design.
-                        <div class="small text-muted">1 hour ago</div>
-                      </div>
-                    </a>
-                    <a href="#" class="dropdown-item d-flex">
-                      <span class="avatar mr-3 align-self-center" style="background-image: url(demo/faces/female/18.jpg)"></span>
-                      <div>
-                        <strong>Rose</strong> deployed new version of NodeJS REST Api V3
-                        <div class="small text-muted">2 hours ago</div>
-                      </div>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item text-center text-muted-dark">Mark all as read</a>
-                  </div>
-                </div> -->
               <div class="dropdown">
                 <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
                   <span class="avatar avatar-placeholder "></span>
@@ -227,14 +193,14 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
       <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
         <div class="container">
           <div class="row align-items-center">
-            <div class="col-lg-3 ml-auto">
+            <!-- <div class="col-lg-3 ml-auto">
               <form class="input-icon my-3 my-lg-0">
                 <input type="search" class="form-control header-search" placeholder="Search&hellip;" tabindex="1">
                 <div class="input-icon-addon">
                   <i class="fe fe-search"></i>
                 </div>
               </form>
-            </div>
+            </div> -->
             <div class="col-lg order-lg-first">
               <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                 <li class="nav-item">
@@ -331,7 +297,7 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
                       <form action="newpost.php" class="post-form">
                         <input type="hidden" value="postlink" name="type" id="type">
                         <div class="form-group">
-                          <input class="form-control form-control-lg" type="text" placeholder="Title" name="title" id="title" required>
+                          <input class="form-control form-control-lg" type="text" placeholder="Link" name="link" id="link" required>
                         </div>
                         <div class="form-group">
                           <textarea class="form-control" rows="3" name="content" id="content" placeholder="Caption (optional)"></textarea>
@@ -354,47 +320,17 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
                foreach ($result as $res) {
                 echo"
                 <div class='card card-aside'>
-                  <div class='card-body d-flex flex-column'>
+                  <div class='card-body d-flex flex-column'>";
+                  if ($res['type'] === 'text') {
+                    echo "<h4><a href='#'>".$res['title']."</a></h4>";
+                  }
+                  echo
+                  "
                     <div class='text-muted'>".$res['content']."</div>
                     <div class='d-flex align-items-center pt-5 mt-auto'>
                       <div class='avatar avatar-placeholder avatar-purple mr-3'></div>
                       <div>
-                        <a href='./profile.html' class='text-default'>".$name.' '.$sname."</a>
-                      </div>
-                      <div class='ml-auto text-red'>
-                        <a id='comment_button' class='icon d-none d-md-inline-block ml-3'><i class='fe fe-message-circle mr-1'></i></a>
-                      </div>
-                    </div>
-                    </br>
-                    <div id='commentBox'>
-                      <ul class='media-list'>
-                        <li class='media mt-4'>
-                          <div class='media-object avatar mr-4' style='background-image: url(demo/faces/female/17.jpg)'></div>
-                          <div class='media-body'>
-                            <strong>Debra Beck: </strong>
-                              <div class='form-group'>
-                                <input class='form-control form-control-lg' type='text' placeholder='Enter your comment' name='comment' id='comment'>
-                              </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>";
-              }
-              ?>
-
-              <?php    
-              foreach ($result_details as $res) {
-                echo"
-                <div class='card card-aside'>
-                  <div class='card-body d-flex flex-column'>
-                      <h4><a href='#'>".$res['title']."</a></h4>
-                    <div class='text-muted'>".$res['content']."</div>
-                    <div class='d-flex align-items-center pt-5 mt-auto'>
-                      <div class='avatar avatar-placeholder avatar-purple mr-3'></div>
-                      <div>
-                        <a href='./profile.html' class='text-default'>".$name.' '.$sname."</a>";
+                        <a href='./profile.php' class='text-default'>".$name.' '.$sname."</a>";
                         echo"<br>";
                         foreach ($res['input-tags'] as $tags) {
                           echo"&nbsp;<span class='tag'>".$tags."  </span>";
@@ -436,7 +372,7 @@ $result_details = $db->post_details->find()->sort(array($userId)); //query for p
                   <table class="table card-table table-striped table-vcenter">
                     <tbody>
                       <?php 
-                        foreach ($userResult as $user ) {
+                        foreach ($recommenBlogger as $user ) {
                           echo"
                             <tr>
                               <td class='w-1'><span class='avatar' style='background-image: url(./demo/faces/male/9.jpg)'></span></td>
